@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour {
 
@@ -33,7 +34,7 @@ public class PlayerAttack : MonoBehaviour {
     void Update() {
         Debug.DrawLine(transform.position,transform.position + transform.right * 100,Color.red);
 
-        Attack(0);
+        //Attack(0);
     }
 
     void FixedUpdate()

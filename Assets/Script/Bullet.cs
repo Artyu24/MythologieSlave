@@ -38,6 +38,7 @@ public class Bullet : MonoBehaviour
 
         float betterDistance = 99999999999;
         bulletDirection = Vector2.zero;
+        enemyTarget = null;
 
         foreach (GameObject enemy in enemyList)
         {
@@ -57,8 +58,11 @@ public class Bullet : MonoBehaviour
         }
         else if(enemyTarget != null)
         {
-            Debug.Log(enemyTarget.GetComponent<EnemyHealth>().GetPotentialLife);
             enemyTarget.GetComponent<EnemyHealth>().TakePotentialDamage(damage);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 

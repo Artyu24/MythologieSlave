@@ -707,6 +707,14 @@ MonoBehaviour:
     m_ActionId: 7e7befae-bd00-4714-99a7-df90edb58ccb
     m_ActionName: Gameplay/Move[/XInputControllerWindows/leftStick]
   - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e7e46764-3c5f-4f07-b802-6b99eb4f041f
+    m_ActionName: Gameplay/ScrollLeft[/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a334e59c-3700-4357-ab21-11429b7cf91f
+    m_ActionName: Gameplay/ScrollRight[/Keyboard/a]
+  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1448973323}
         m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
@@ -720,7 +728,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: e7382ead-9a30-4bbc-83e9-eabe7fd56f32
+    m_ActionId: 3fac9785-9638-4aea-bb99-1be3cfba6eb2
     m_ActionName: Gameplay/Shoot[/XInputControllerWindows/rightTrigger]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
@@ -802,11 +810,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1448973316}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47e9724108c522e46b5cbed75af42a0a, type: 3}
+  m_Script: {fileID: 11500000, guid: edae6b6546ad2bf408c15f8c637e1565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: -8271817254071194722, guid: a46d574c73c061242b9c71a80efb4844, type: 3}
   spawnBulletPoint: {fileID: 634042836}
+  cooldownTwo: 0
+  isInCooldownTwo: 0
+  rayDistance: 0
+  rays: []
 --- !u!1 &1663633536
 GameObject:
   m_ObjectHideFlags: 0
