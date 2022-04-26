@@ -598,6 +598,7 @@ GameObject:
   - component: {fileID: 1448973318}
   - component: {fileID: 1448973317}
   - component: {fileID: 1448973323}
+  - component: {fileID: 1448973324}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -730,6 +731,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 3fac9785-9638-4aea-bb99-1be3cfba6eb2
     m_ActionName: Gameplay/Shoot[/XInputControllerWindows/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1448973324}
+        m_TargetAssemblyTypeName: CompetenceOne, Assembly-CSharp
+        m_MethodName: Shoot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b153bce4-9fd4-446b-bafc-c5190fb7a1ec
+    m_ActionName: Gameplay/CompetenceOne
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -819,6 +836,23 @@ MonoBehaviour:
   isInCooldownTwo: 0
   rayDistance: 0
   rays: []
+--- !u!114 &1448973324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448973316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d9c42df9499404697293c7f5296535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axe: {fileID: 4004230643325152201, guid: b1f52f1851defd84092deffe3dd643d3, type: 3}
+  spawnAxePoint: {fileID: 634042836}
+  bulletSpeed: 5
+  bulletDamage: 50
+  nbrEnemyStrike: 20
 --- !u!1 &1663633536
 GameObject:
   m_ObjectHideFlags: 0

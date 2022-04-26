@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Android;
 
 public class EnemyHealth : MonoBehaviour
 {
     private int life, maxLife = 100, potentialLife;
     public float GetLife { get => life;}
     public float GetPotentialLife { get => potentialLife; }
-
 
     private void Awake()
     {
