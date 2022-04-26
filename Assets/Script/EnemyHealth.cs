@@ -17,6 +17,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        Debug.Log("apply damage");
         life -= damage;
         if (life <= 0)
         {
@@ -27,5 +28,11 @@ public class EnemyHealth : MonoBehaviour
     public void TakePotentialDamage(int potentialDamage)
     {
         potentialLife -= potentialDamage;
+    }
+
+    private void OnTriggerEnter2D(Collider2D hit) {
+        if(hit.tag == "Laser") {
+            TakeDamage(PlayerAttack.Instance.damageRay);
+        }
     }
 }

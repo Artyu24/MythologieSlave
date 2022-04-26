@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour {
 
@@ -22,22 +23,33 @@ public class PlayerAttack : MonoBehaviour {
     public bool isInCooldownTwo;
 
 
+    [Header("Competence 3")]
+    public GameObject hammerPrefab;
+    public float spawnRange;
+    public int spawnMin;
+    public int spawnMax;
+    private int maxSpawn;
+    private int actualSpawn;
+
 
     [Header("Competence 4")]
     public float rayDistance;
     public List<GameObject> rays;
+    public int damageRay;
 
-    void Start() {
+    public static PlayerAttack Instance { get; set; }
+
+    private void Awake() {
+        Instance = this;
     }
+    void Start() {}
 
     void Update() {
         Debug.DrawLine(transform.position,transform.position + transform.right * 100,Color.red);
 
-        Attack(0);
     }
 
-    void FixedUpdate()
-    {
+    void FixedUpdate() {
         //SHOOT
         delay += Time.fixedDeltaTime;
 
@@ -58,25 +70,43 @@ public class PlayerAttack : MonoBehaviour {
             isShooting = false;
     }
 
-    void Attack(int attackID) {
-        Vector3 beginTop = rays[0].transform.position;
-        Vector3 beginBottom = rays[1].transform.position;
-        Vector3 endTop = rays[0].transform.position + transform.right * rayDistance;
-        Vector3 endBottom = rays[1].transform.position + transform.right * rayDistance;
-
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        List<GameObject> ennemies = new List<GameObject>();
-
-        foreach(GameObject enemy in enemies) {
-            Vector3 enemyPos = enemy.transform.position;
-
-            if(enemyPos.x >= beginTop.x && enemyPos.x <= endTop.x) {
-                if(enemyPos.y <= beginTop.y && enemyPos.y >= endBottom.y)
-                    ennemies.Add(enemy);
-            }
+    public void OnSkillHammer(InputAction.CallbackContext e) {
+        if(e.performed) {
+            Debug.Log("skill");
+            maxSpawn = Random.Range(spawnMin, spawnMax);
+            SpawnHammer();
+            
         }
+    }
 
-        // (Vector2 origin, Vector2 direction, float distance);
+    private IEnumerator WaitToSpawnHammer() {
+        yield return new WaitForSeconds(3f);
+
+        Debug.Log("entered");
+        
+        actualSpawn++;
+
+        if(actualSpawn < maxSpawn)
+            SpawnHammer();
+    }
+
+    private void SpawnHammer() {
+        Vector3 beginRandom = transform.position - transform.right * spawnRange;
+        Vector3 endRandom = transform.position + transform.right * spawnRange;
+
+        Vector3 shieldBegin = transform.position - transform.right * 1.5f;
+        Vector3 shieldEnd = transform.position + transform.right * 1.5f;
+
+        beginRandom.y = Camera.main.transform.position.y + Camera.main.orthographicSize;
+        endRandom.y = Camera.main.transform.position.y + Camera.main.orthographicSize;
+
+        float spawnX = Random.Range(beginRandom.x,endRandom.x);
+
+        Instantiate(hammerPrefab,new Vector3(spawnX,beginRandom.y - 0.5f,beginRandom.z),Quaternion.Euler(0,0,-180));
+
+        StartCoroutine(WaitToSpawnHammer());
+
+        Debug.Log("entered02");
     }
 
 
