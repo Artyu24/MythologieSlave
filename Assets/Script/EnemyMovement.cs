@@ -6,6 +6,7 @@ public class EnemyMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
 
+    public float distancePlayer = 1;
     public float speed = 5;
 
     private void Awake()
@@ -22,18 +23,16 @@ public class EnemyMovement : MonoBehaviour
 
         foreach (GameObject allies in getAllAllies)
         {
-            float enemyToAllies = Vector2.Distance(transform.position, allies.transform.position);
+            float bulletToEnemy = Vector2.Distance(transform.position, allies.transform.position);
 
-            Debug.Log(allies.name + " : " + enemyToAllies);
-            //Debug.Log("better distance : " + betterDistance);
-
-            if (betterDistance > enemyToAllies)
+            if (betterDistance > bulletToEnemy)
             {
-                betterDistance = enemyToAllies;
+                betterDistance = bulletToEnemy;
                 enemyDirection = allies.transform.position - transform.position;
             }
         }
 
-        rb.MovePosition(rb.position + enemyDirection.normalized * Time.fixedDeltaTime * speed);
+        if(betterDistance > distancePlayer)
+            rb.MovePosition(rb.position + enemyDirection.normalized * Time.fixedDeltaTime * speed);
     }
 }
