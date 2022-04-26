@@ -15,13 +15,22 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Shoot",
-                    "type": "Button",
-                    "id": "e7382ead-9a30-4bbc-83e9-eabe7fd56f32",
+                    "name": "ScrollLeft",
+                    "type": "Value",
+                    "id": "e7e46764-3c5f-4f07-b802-6b99eb4f041f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ScrollRight",
+                    "type": "Value",
+                    "id": "a334e59c-3700-4357-ab21-11429b7cf91f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -38,12 +47,23 @@
                 },
                 {
                     "name": "",
-                    "id": "47cf2017-5aad-47ef-942c-3742d95bd6c4",
-                    "path": "<Gamepad>/rightTrigger",
+                    "id": "7244b1dd-48c7-4e9b-80f7-716106788c3e",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Shoot",
+                    "action": "ScrollLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2ee1868b-314d-4a80-877c-bf451dffb78a",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ScrollRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
