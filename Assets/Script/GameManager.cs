@@ -11,19 +11,25 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform playerTutorialSpawn;
     [SerializeField] private Transform playerGameSpawn;
 
-    [Header("Time Event Deus Power Spawn")]
-    [SerializeField] private List<float> minutesPerEvent = new List<float>();
-
     [Header("Enemy Tutorial Spawn")]
     [SerializeField] private List<Transform> enemyTutorialAutoAttackSpawn = new List<Transform>();
     [SerializeField] private List<Transform> enemyTutorialDeusAttackSpawn = new List<Transform>();
-    [SerializeField] private EnemyMovement tutoEnemy;
+    [SerializeField] private EnemyIA tutoEnemy;
     [SerializeField] private float distanceBtwPlayerTutorial = 1.3f;
     [SerializeField] private float enemySpeedTutorial = 1;
     public static int nbrEnemyTuto;
 
-    [Header("Orbe Spawn")] 
+    [Header("Orbe Spawn Tutorial")] 
     [SerializeField] private Transform orbeSpawn;
+
+    [Header("End Tutorial")] 
+    [SerializeField] private BoxCollider2D entranceOfForest;
+
+    [Header("List of Event by Time / Kill")]
+    [SerializeField] private List<float> minutesPerEventList = new List<float>();
+    [SerializeField] private List<float> killPerEventList = new List<float>();
+
+    public static int enemyKill;
 
     private static bool isInitTutoDone;
 
@@ -54,17 +60,11 @@ public class GameManager : MonoBehaviour
                 isInitTutoDone = true;
                 if (tutorialState == TutorialState.Mouvement)
                 {
-                    Instantiate(player, playerTutorialSpawn.position, Quaternion.identity);
+                    player = Instantiate(player, playerTutorialSpawn.position, Quaternion.identity);
                 }
                 else if (tutorialState == TutorialState.AutoAttack)
                 {
-                    nbrEnemyTuto = enemyTutorialAutoAttackSpawn.Count;
-                    foreach (Transform enemySpawnPos in enemyTutorialAutoAttackSpawn)
-                    {
-                        EnemyMovement enemy = Instantiate(tutoEnemy, enemySpawnPos.position, Quaternion.identity);
-                        enemy.DistancePlayer = distanceBtwPlayerTutorial;
-                        enemy.Speed = enemySpeedTutorial;
-                    }
+                    StartCoroutine(WaitBeforeSpawn());
                 }
                 else if (tutorialState == TutorialState.Interaction)
                 {
@@ -75,23 +75,41 @@ public class GameManager : MonoBehaviour
                     nbrEnemyTuto = enemyTutorialDeusAttackSpawn.Count;
                     foreach (Transform enemySpawnPos in enemyTutorialDeusAttackSpawn)
                     {
-                        EnemyMovement enemy = Instantiate(tutoEnemy, enemySpawnPos.position, Quaternion.identity);
+                        EnemyIA enemy = Instantiate(tutoEnemy, enemySpawnPos.position, Quaternion.identity);
                         enemy.DistancePlayer = distanceBtwPlayerTutorial;
-                        enemy.Speed = enemySpeedTutorial;
+                        enemy.MovSpeed = enemySpeedTutorial;
                     }
                 }
+                else if (tutorialState == TutorialState.GoToForest)
+                {
+                    entranceOfForest.isTrigger = true;
+                }
             }
+        }
+        else if (gameState == GameState.InitGame && GameObject.FindGameObjectWithTag("PlayerSpawn") != null)
+        {
+            player.transform.position = GameObject.FindGameObjectWithTag("PlayerSpawn").transform.position;
+            gameState =  GameState.InGame;
         }
         else if (gameState == GameState.InGame)
         {
             timeInGame += Time.deltaTime;
 
-            for(int i = 0; i < minutesPerEvent.Count;)
+            for(int i = 0; i < minutesPerEventList.Count;)
             {
-                if (timeInGame > minutesPerEvent[i] && minutesPerEvent[i] != 0)
+                if (timeInGame > minutesPerEventList[i] && minutesPerEventList[i] != 0)
                 {
-                    minutesPerEvent[i] = 0;
+                    minutesPerEventList[i] = 0;
                     //Appeler fonction de spawn de la boule de dieu dans les temples
+                }
+            }
+
+            for (int i = 0; i < killPerEventList.Count;)
+            {
+                if (enemyKill > killPerEventList[i] && killPerEventList[i] != 0)
+                {
+                    killPerEventList[i] = 0;
+                    //Appeler fonction de spawn d'un coffre d'amélioration de compétence
                 }
             }
         }
@@ -118,11 +136,12 @@ public class GameManager : MonoBehaviour
                 break;
             case TutorialState.DeusAttack:
                 tutorialState = TutorialState.GoToForest;
+                isInitTutoDone = false;
                 //Go to the end of the forest
                 break;
             case TutorialState.GoToForest:
                 tutorialState = TutorialState.End;
-                gameState = GameState.InGame;
+                gameState = GameState.InitGame;
                 //Switch GameScene
                 break;
             default:
@@ -133,13 +152,21 @@ public class GameManager : MonoBehaviour
     private IEnumerator WaitBeforeSpawn()
     {
         yield return new WaitForSeconds(2);
-        isInitTutoDone = false;
+        nbrEnemyTuto = enemyTutorialAutoAttackSpawn.Count;
+        foreach (Transform enemySpawnPos in enemyTutorialAutoAttackSpawn)
+        {
+            EnemyIA enemy = Instantiate(tutoEnemy, enemySpawnPos.position, Quaternion.identity);
+            enemy.DistancePlayer = distanceBtwPlayerTutorial;
+            enemy.MovSpeed = enemySpeedTutorial;
+        }
     }
 
     public enum GameState
     {
         Tuto,
+        InitGame,
         InGame,
+        FinalBoss,
         Paused,
         End
     };

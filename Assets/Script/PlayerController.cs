@@ -13,11 +13,11 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        DontDestroyOnLoad(this.gameObject);
     }
 
     void FixedUpdate()
     {
-        Debug.Log("ahsbd");
         rb.MovePosition(rb.position + movementInput * Time.fixedDeltaTime * speed);
         if (movementInput != Vector2.zero && GameManager.GetGameState == GameManager.GameState.Tuto && GameManager.GetTutorialState == GameManager.TutorialState.Mouvement)
             GameManager.UpdateTutorial();

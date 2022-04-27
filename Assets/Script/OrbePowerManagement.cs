@@ -14,22 +14,22 @@ public class OrbePowerManagement : MonoBehaviour
 
     private void Start()
     {
-        bool isDone = true;
+        bool isDone = false;
         
         foreach (GameObject orbe in listDeusOrbe)
         {
-            if (orbe == null)
+            isDone = false;
+            if (orbe != null)
             {
-                break;
-            }
-            while (isDone)
-            {
-                isDone = false;
-                int i = Random.Range(0, 4);
-                if (listOrbeFinal[i] == null)
+                while (!isDone)
                 {
-                    isDone = true;
-                    listOrbeFinal[i] = orbe;
+                    isDone = false;
+                    int i = Random.Range(0, 4);
+                    if (listOrbeFinal[i] == null)
+                    {
+                        isDone = true;
+                        listOrbeFinal[i] = orbe;
+                    }
                 }
             }
         }
