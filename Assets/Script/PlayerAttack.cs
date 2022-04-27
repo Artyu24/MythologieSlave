@@ -17,10 +17,15 @@ public class PlayerAttack : MonoBehaviour {
     private int bulletDamage = 50;
 
     [Header("Competence 2")]
+    public GameObject allyPrefab;
     public int cooldownTwo;
     private float timerTwo;
     [HideInInspector]
     public bool isInCooldownTwo;
+    private int spawnAllies;
+    public int maxSpawnAllies = 1;
+    public float spawnAlliesDelay;
+    public float spawnAlliesRange;
 
 
     [Header("Competence 3")]
@@ -28,6 +33,7 @@ public class PlayerAttack : MonoBehaviour {
     public float spawnRange;
     public int spawnMin;
     public int spawnMax;
+    public float spawnDelay;
     private int maxSpawn;
     private int actualSpawn;
 
@@ -70,19 +76,55 @@ public class PlayerAttack : MonoBehaviour {
             isShooting = false;
     }
 
+
+    public void OnSkillSpawn(InputAction.CallbackContext e) {
+        if(e.performed) {
+            SpawnAllies();
+        }
+    }
+
+    public void SpawnAllies() {
+        Vector3 beginRandom = transform.position - transform.right * spawnAlliesRange;
+        Vector3 endRandom = transform.position + transform.right * spawnAlliesRange;
+
+        Vector3 shieldBegin = transform.position - transform.right * 1.5f;
+        Vector3 shieldEnd = transform.position + transform.right * 1.5f;
+
+        float spawnX = Random.Range(beginRandom.x, endRandom.x);
+        float spawnY = Random.Range(transform.position.y - 5, transform.position.y + 5);
+
+        while (spawnX >= shieldBegin.x && spawnX <= shieldEnd.x) 
+            spawnX = Random.Range(beginRandom.x, endRandom.x);
+        
+        while (spawnY >= (transform.position.y - 1) && spawnY <= (transform.position.y + 1))
+            spawnY = Random.Range(transform.position.y - 5, transform.position.y + 5);
+
+        Instantiate(allyPrefab, new Vector3(spawnX, spawnY, 0f), Quaternion.identity);
+
+        StartCoroutine(WaitToSpawnAllies());
+    }
+
+    public IEnumerator WaitToSpawnAllies() {
+        yield return new WaitForSeconds(spawnAlliesDelay);
+
+        spawnAllies++;
+
+        if (spawnAllies < maxSpawnAllies)
+            SpawnAllies();
+    }
+
+
+    #region "Hammer Skill"
+
     public void OnSkillHammer(InputAction.CallbackContext e) {
         if(e.performed) {
-            Debug.Log("skill");
             maxSpawn = Random.Range(spawnMin, spawnMax);
             SpawnHammer();
-            
         }
     }
 
     private IEnumerator WaitToSpawnHammer() {
-        yield return new WaitForSeconds(3f);
-
-        Debug.Log("entered");
+        yield return new WaitForSeconds(spawnDelay);
         
         actualSpawn++;
 
@@ -102,12 +144,14 @@ public class PlayerAttack : MonoBehaviour {
 
         float spawnX = Random.Range(beginRandom.x,endRandom.x);
 
+        while(spawnX >= shieldBegin.x && spawnX <= shieldEnd.x) {
+            spawnX = Random.Range(beginRandom.x, endRandom.x);
+        }
+
         Instantiate(hammerPrefab,new Vector3(spawnX,beginRandom.y - 0.5f,beginRandom.z),Quaternion.Euler(0,0,-180));
 
         StartCoroutine(WaitToSpawnHammer());
-
-        Debug.Log("entered02");
     }
 
-
+    #endregion
 }
