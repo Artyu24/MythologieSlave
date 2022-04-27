@@ -6,8 +6,8 @@ public class EnemyMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
 
-    public float distancePlayer = 1;
-    private float speed = 5;
+    [SerializeField] private float distancePlayer = 1;
+    [SerializeField] private float speed = 5;
     public float DistancePlayer { get => distancePlayer; set => distancePlayer = value; }
     public float Speed { get => speed; set => speed = value; }
 

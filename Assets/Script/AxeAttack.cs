@@ -95,15 +95,18 @@ public class AxeAttack : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             EnemyHealth enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
-            enemyHealth.TakeDamage(damage);
+            if (!enemyStrikeList.Contains(enemyHealth))
+            {
+                enemyHealth.TakeDamage(damage);
 
-            nbrEnemyStrike--;
-            enemyStrikeList.Add(enemyHealth);
+                nbrEnemyStrike--;
+                enemyStrikeList.Add(enemyHealth);
 
-            if(nbrEnemyStrike == 0)
-                ResetAxeAttack();
-            else
-                TargetAnEnemy();
+                if(nbrEnemyStrike == 0)
+                    ResetAxeAttack();
+                else
+                    TargetAnEnemy();
+            }
         }
     }
 }

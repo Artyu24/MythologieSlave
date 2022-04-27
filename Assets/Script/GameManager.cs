@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Player Spawn")]
-    [SerializeField] private GameObject playerTutorialSpawn;
-    [SerializeField] private GameObject playerGameSpawn;
+    [Header("Player Spawn")] 
+    [SerializeField] private GameObject player;
+    [SerializeField] private Transform playerTutorialSpawn;
+    [SerializeField] private Transform playerGameSpawn;
 
     [Header("Time Event Deus Power Spawn")]
     [SerializeField] private List<float> minutesPerEvent = new List<float>();
@@ -15,7 +17,15 @@ public class GameManager : MonoBehaviour
     [Header("Enemy Tutorial Spawn")]
     [SerializeField] private List<Transform> enemyTutorialAutoAttackSpawn = new List<Transform>();
     [SerializeField] private List<Transform> enemyTutorialDeusAttackSpawn = new List<Transform>();
-    [SerializeField] private GameObject tutoEnemy;
+    [SerializeField] private EnemyMovement tutoEnemy;
+    [SerializeField] private float distanceBtwPlayerTutorial = 1.3f;
+    [SerializeField] private float enemySpeedTutorial = 1;
+    public static int nbrEnemyTuto;
+
+    [Header("Orbe Spawn")] 
+    [SerializeField] private Transform orbeSpawn;
+
+    private static bool isInitTutoDone;
 
     private float timeInGame;
 
@@ -31,14 +41,48 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-
         gameState = GameState.Tuto;
         tutorialState = TutorialState.Mouvement;
     }
 
     private void Update()
     {
-        if (gameState == GameState.InGame)
+        if (gameState == GameState.Tuto)
+        {
+            if (!isInitTutoDone)
+            {
+                isInitTutoDone = true;
+                if (tutorialState == TutorialState.Mouvement)
+                {
+                    Instantiate(player, playerTutorialSpawn.position, Quaternion.identity);
+                }
+                else if (tutorialState == TutorialState.AutoAttack)
+                {
+                    nbrEnemyTuto = enemyTutorialAutoAttackSpawn.Count;
+                    foreach (Transform enemySpawnPos in enemyTutorialAutoAttackSpawn)
+                    {
+                        EnemyMovement enemy = Instantiate(tutoEnemy, enemySpawnPos.position, Quaternion.identity);
+                        enemy.DistancePlayer = distanceBtwPlayerTutorial;
+                        enemy.Speed = enemySpeedTutorial;
+                    }
+                }
+                else if (tutorialState == TutorialState.Interaction)
+                {
+                    Instantiate(OrbePowerManagement.listOrbeFinal[0], orbeSpawn.position, Quaternion.identity);
+                }
+                else if (tutorialState == TutorialState.DeusAttack)
+                {
+                    nbrEnemyTuto = enemyTutorialDeusAttackSpawn.Count;
+                    foreach (Transform enemySpawnPos in enemyTutorialDeusAttackSpawn)
+                    {
+                        EnemyMovement enemy = Instantiate(tutoEnemy, enemySpawnPos.position, Quaternion.identity);
+                        enemy.DistancePlayer = distanceBtwPlayerTutorial;
+                        enemy.Speed = enemySpeedTutorial;
+                    }
+                }
+            }
+        }
+        else if (gameState == GameState.InGame)
         {
             timeInGame += Time.deltaTime;
 
@@ -59,17 +103,24 @@ public class GameManager : MonoBehaviour
         {
             case TutorialState.Mouvement:
                 tutorialState = TutorialState.AutoAttack;
-                //Spawn Enemy for auto attack
+                isInitTutoDone = false;
+                //Spawn Enemy for test
                 break;
             case TutorialState.AutoAttack:
                 tutorialState = TutorialState.Interaction;
+                isInitTutoDone = false;
                 //Spawn Deus Orbe
                 break;
             case TutorialState.Interaction:
                 tutorialState = TutorialState.DeusAttack;
-                //Spawn Enemy For test compétence
+                isInitTutoDone = false;
+                //Spawn Enemy For test Deus Attack
                 break;
             case TutorialState.DeusAttack:
+                tutorialState = TutorialState.GoToForest;
+                //Go to the end of the forest
+                break;
+            case TutorialState.GoToForest:
                 tutorialState = TutorialState.End;
                 gameState = GameState.InGame;
                 //Switch GameScene
@@ -79,17 +130,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void SpawnEnemyTutorialAutoAttack()
+    private IEnumerator WaitBeforeSpawn()
     {
-        foreach (Transform enemySpawnPos in enemyTutorialAutoAttackSpawn)
-        {
-            //EnemyMovement enemy = Instantiate()
-        }
-    }
-
-    private void SpawnEnemyTutorialDeusAttack()
-    {
-
+        yield return new WaitForSeconds(2);
+        isInitTutoDone = false;
     }
 
     public enum GameState
@@ -106,6 +150,7 @@ public class GameManager : MonoBehaviour
         AutoAttack,
         Interaction,
         DeusAttack,
+        GoToForest,
         End
     };
 

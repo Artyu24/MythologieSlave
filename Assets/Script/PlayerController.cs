@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        Debug.Log("ahsbd");
         rb.MovePosition(rb.position + movementInput * Time.fixedDeltaTime * speed);
         if (movementInput != Vector2.zero && GameManager.GetGameState == GameManager.GameState.Tuto && GameManager.GetTutorialState == GameManager.TutorialState.Mouvement)
             GameManager.UpdateTutorial();

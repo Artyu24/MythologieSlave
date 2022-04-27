@@ -21,6 +21,14 @@ public class EnemyHealth : MonoBehaviour
         if (life <= 0)
         {
             Destroy(gameObject);
+            if (GameManager.tutorialState == GameManager.TutorialState.AutoAttack || GameManager.tutorialState == GameManager.TutorialState.DeusAttack)
+            {
+                GameManager.nbrEnemyTuto--;
+                if (GameManager.nbrEnemyTuto == 0)
+                {
+                    GameManager.UpdateTutorial();
+                }
+            }
         }
     }
 
