@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Uduino;
 
 public class PlayerAttack : MonoBehaviour {
 
@@ -45,8 +46,17 @@ public class PlayerAttack : MonoBehaviour {
 
     public static PlayerAttack Instance { get; set; }
 
+
+    private int RED = 7;
+    private int GREEN = 6;
+    private int BLUE = 5;
+
     private void Awake() {
         Instance = this;
+
+        UduinoManager.Instance.pinMode(7, PinMode.Output);
+        UduinoManager.Instance.pinMode(6, PinMode.Output);
+        UduinoManager.Instance.pinMode(5, PinMode.Output);
     }
     void Start() {}
 
@@ -79,6 +89,13 @@ public class PlayerAttack : MonoBehaviour {
 
     public void OnSkillSpawn(InputAction.CallbackContext e) {
         if(e.performed) {
+
+            Debug.Log("debug arduino");
+
+            UduinoManager.Instance.analogWrite(RED,/*(int) Scepter.Instance.spell2.r*/ 0);
+            UduinoManager.Instance.analogWrite(GREEN,255);
+            UduinoManager.Instance.analogWrite(BLUE, /*(int)Scepter.Instance.spell2.b*/ 0);
+
             SpawnAllies();
         }
     }

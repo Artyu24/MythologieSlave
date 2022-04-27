@@ -15,8 +15,21 @@ public class Scepter : MonoBehaviour {
     public int actualSpellID;
     public List<Image> spellsImage;
 
+    public Color spell1;
+    public Color spell2;
+    public Color spell3;
+    public Color spell4;
+
+    public static Scepter Instance { get; private set; }
+
+    private void Awake() {
+        Instance = this;
+    }
+
     void Start() {
         joycons = JoyconManager.Instance.j;
+
+        
     }
 
     void Update() {
