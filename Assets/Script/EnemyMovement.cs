@@ -7,7 +7,9 @@ public class EnemyMovement : MonoBehaviour
     private Rigidbody2D rb;
 
     public float distancePlayer = 1;
-    public float speed = 5;
+    private float speed = 5;
+    public float DistancePlayer { get => distancePlayer; set => distancePlayer = value; }
+    public float Speed { get => speed; set => speed = value; }
 
     private void Awake()
     {
