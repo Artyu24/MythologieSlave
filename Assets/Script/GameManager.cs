@@ -114,6 +114,7 @@ public class GameManager : MonoBehaviour
                 {
                     minutesPerEventList[i] = 0;
                     //Appeler fonction de spawn de la boule de dieu dans les temples
+                    OrbePowerManagement.Instance.SpawnTotem();
                 }
             }
 

@@ -5,12 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Laser
+  - Hammer
   - PlayerSpawn
   - PlayerHealthBar
   - ChestUI
   - SilverChest
   - GoldChest
   - PlayerShieldBar
+  - Totem
   layers:
   - Default
   - TransparentFX

@@ -1,0 +1,13 @@
+{
+"dialogs": 
+    [
+		{
+			"Author": "Dieu",
+			"Name": "FireGod",
+			"Sprite":  "God",
+			"Content": [
+				"Bonjour je suis le fire god "
+			]
+		}
+    ]
+}	

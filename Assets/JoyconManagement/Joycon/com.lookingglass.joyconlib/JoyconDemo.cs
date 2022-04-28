@@ -67,18 +67,17 @@ public class JoyconDemo : MonoBehaviour {
             stick = j.GetStick();
 
 			// Gyro values: x, y, z axis values (in radians per second)
-			gyro = new Vector3((int)j.GetGyro().x,(int)j.GetGyro().y,(int)j.GetGyro().z);
+			gyro = new Vector3(j.GetGyro().x,j.GetGyro().y,j.GetGyro().z);
 
 
 			// Accel values:  x, y, z axis values (in Gs)
-			accel = new Vector3((int)j.GetAccel().x, (int)j.GetAccel().y, (int)j.GetAccel().z);
+			accel = new Vector3(j.GetAccel().x, j.GetAccel().y, j.GetAccel().z);
 
 			orientation = j.GetVector();
-			
-			if (j.GetButton(Joycon.Button.DPAD_UP)){
-				gameObject.GetComponent<Renderer>().material.color = Color.red;
+			if (j.GetButton(Joycon.Button.DPAD_UP) && gameObject.TryGetComponent(out Renderer r)){
+				r.material.color = Color.red;
 			} else{
-				gameObject.GetComponent<Renderer>().material.color = Color.blue;
+				//gameObject.GetComponent<Renderer>().material.color = Color.blue;
 			}
             gameObject.transform.rotation = orientation;
         }

@@ -10,7 +10,7 @@ public class EnemyHealth : MonoBehaviour
     public Color Low, High;
     [SerializeField] private Vector3 offset;
 
-    private int life, maxLife = 100, potentialLife;
+    public int life, maxLife = 100, potentialLife;
     public float GetLife { get => life;}
     public float GetPotentialLife { get => potentialLife; }
 
@@ -56,10 +56,18 @@ public class EnemyHealth : MonoBehaviour
 
     private void SetHealth()
     {
-        slider.gameObject.SetActive(life < maxLife);
-        slider.value = life;
+        slider.gameObject.SetActive(life <= maxLife);
+
         slider.maxValue = maxLife;
+        slider.value = life;
 
         slider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(Low, High, slider.normalizedValue);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.tag == "Laser") {
+            TakeDamage(PlayerAttack.Instance.damageRay);
+        }
+    }
+
 }
