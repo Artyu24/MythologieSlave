@@ -42,6 +42,7 @@ public class PlayerAttack : MonoBehaviour {
     public int maxSpawnAllies = 1;
     public float spawnAlliesDelay;
     public float spawnAlliesRange;
+    public int allyDamage;
 
 
     [Header("Competence 3")]
@@ -122,6 +123,9 @@ public class PlayerAttack : MonoBehaviour {
     {
         bulletDamage += damage;
         axeDamage += damage;
+        allyDamage += damage;
+        damageRay += damage;
+        hammerAttack += damage;
     }
 
     public void OnSkillSpawn(InputAction.CallbackContext e) {
