@@ -119,6 +119,13 @@ public class PlayerAttack : MonoBehaviour {
             isAxeShooting = false;
     }
 
+    //Upgrade damage when Item Get
+    public void UpgradeDamage(int damage)
+    {
+        bulletDamage += damage;
+        axeDamage += damage;
+    }
+
     public void OnSkillSpawn(InputAction.CallbackContext e) {
         if(e.performed) {
 

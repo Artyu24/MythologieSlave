@@ -56,7 +56,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void SetHealth()
     {
-        slider.gameObject.SetActive(life <= maxLife);
+        slider.gameObject.SetActive(life < maxLife);
 
         slider.maxValue = maxLife;
         slider.value = life;

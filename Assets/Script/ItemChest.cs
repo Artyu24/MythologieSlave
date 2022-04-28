@@ -44,7 +44,7 @@ public class ItemChest : MonoBehaviour
                     case 2:
                         objectImg.sprite = damageSprite;
                         objectText.text = damageText;
-                        //Add Damage for everyone
+                        col.gameObject.GetComponent<PlayerAttack>().UpgradeDamage(5);
                         break;
                     case 3:
                         objectImg.sprite = speedSprite;
