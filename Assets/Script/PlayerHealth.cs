@@ -5,28 +5,49 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private Slider slider;
+    [SerializeField] private Slider healSlider;
+    [SerializeField] private Slider shieldSlider;
     public Color Low, High;
 
-    private int life, maxLife = 1000;
+    private int life, shield, maxLife = 1000, maxShield = 200;
     public float GetLife { get => life; }
 
     private void Awake()
     {
         GameObject healthBar = GameObject.FindGameObjectWithTag("PlayerHealthBar");
-        slider = healthBar.GetComponent<Slider>();
+        GameObject shieldBar = GameObject.FindGameObjectWithTag("PlayerShieldBar");
+        healSlider = healthBar.GetComponent<Slider>();
+        shieldSlider = shieldBar.GetComponent<Slider>();
         life = maxLife;
         SetHealth();
+        SetShield();
     }
 
     public void TakeDamage(int damage)
     {
-        life -= damage;
-        if (life <= 0)
+        if (shield > 0)
         {
-            Destroy(gameObject);
+            if (shield <= damage)
+            {
+                damage -= shield;
+                shield = 0;
+            }
+            else
+            {
+               shield -= damage;
+            }
+        }
+
+        if (shield == 0)
+        {
+            life -= damage;
+            if (life <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
         SetHealth();
+        SetShield();
     }
 
     public void AddLife(int heal)
@@ -40,9 +61,21 @@ public class PlayerHealth : MonoBehaviour
 
     private void SetHealth()
     {
-        slider.maxValue = maxLife;
-        slider.value = life;
+        healSlider.maxValue = maxLife;
+        healSlider.value = life;
 
-        slider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(Low, High, slider.normalizedValue);
+        healSlider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(Low, High, healSlider.normalizedValue);
+    }
+    public void AddShield()
+    {
+        shield = maxShield;
+        SetShield();
+    }
+
+    private void SetShield()
+    {
+        shieldSlider.gameObject.SetActive(shield > 0);
+        shieldSlider.maxValue = maxShield;
+        shieldSlider.value = shield;
     }
 }

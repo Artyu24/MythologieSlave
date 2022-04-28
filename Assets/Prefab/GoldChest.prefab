@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 123384338367252355}
   - component: {fileID: 5204890341574047262}
+  - component: {fileID: -9183722698215757223}
+  - component: {fileID: -4751169512699306702}
   m_Layer: 0
   m_Name: GoldChest
-  m_TagString: Untagged
+  m_TagString: GoldChest
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,3 +84,49 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-9183722698215757223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3567488693729767896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43e0fd4dc4af694a8efd94f99d6c0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soinSprite: {fileID: 21300000, guid: 093633f2dfb5a6941bdd9561d8562a1a, type: 3}
+  shieldSprite: {fileID: 21300000, guid: 65bff4ae3a977044ba7237c0ab1b24bc, type: 3}
+  damageSprite: {fileID: 21300000, guid: 673fc5eb2e7c4004da0c017a538742cc, type: 3}
+  speedSprite: {fileID: 21300000, guid: a288f1316dea919428fd07a19b1b9dc4, type: 3}
+  soinText: Heal !
+  shieldText: Shield
+  damageText: More Damage
+  speedText: More Speed
+--- !u!61 &-4751169512699306702
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3567488693729767896}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0

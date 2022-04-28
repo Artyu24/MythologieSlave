@@ -7,6 +7,10 @@ TagManager:
   - Enemy
   - PlayerSpawn
   - PlayerHealthBar
+  - ChestUI
+  - SilverChest
+  - GoldChest
+  - PlayerShieldBar
   layers:
   - Default
   - TransparentFX
