@@ -32,7 +32,6 @@ public class EnemyHealth : MonoBehaviour
         SetHealth();
         if (life <= 0)
         {
-            Destroy(gameObject);
             if (GameManager.tutorialState == GameManager.TutorialState.AutoAttack || GameManager.tutorialState == GameManager.TutorialState.DeusAttack)
             {
                 GameManager.nbrEnemyTuto--;
@@ -44,7 +43,9 @@ public class EnemyHealth : MonoBehaviour
             else
             {
                 GameManager.enemyKill++;
+                GameManager.lastEnemyKillPos = gameObject.transform.position;
             }
+            Destroy(gameObject);
         }
     }
 

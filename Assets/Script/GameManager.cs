@@ -25,11 +25,19 @@ public class GameManager : MonoBehaviour
     [Header("End Tutorial")] 
     [SerializeField] private BoxCollider2D entranceOfForest;
 
-    [Header("List of Event by Time / Kill")]
+    [Header("List of Event by Time")]
     [SerializeField] private List<float> minutesPerEventList = new List<float>();
-    [SerializeField] private List<float> killPerEventList = new List<float>();
 
+    [Header("Kill enemy")]
+    [SerializeField] private float enemyToKill = 20;
     public static int enemyKill;
+    public static Vector3 lastEnemyKillPos;
+
+    [Header("Chest")] 
+    [SerializeField] private GameObject silverChest;
+    [SerializeField] private GameObject goldChest;
+    private int nbrSilverChest;
+
 
     private static bool isInitTutoDone;
 
@@ -104,12 +112,18 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-            for (int i = 0; i < killPerEventList.Count;)
+            if (enemyKill >= enemyToKill)
             {
-                if (enemyKill > killPerEventList[i] && killPerEventList[i] != 0)
+                enemyToKill = enemyKill + enemyToKill * 1.5f;
+                if (nbrSilverChest == 3)
                 {
-                    killPerEventList[i] = 0;
-                    //Appeler fonction de spawn d'un coffre d'amélioration de compétence
+                    nbrSilverChest = 0;
+                    Instantiate(goldChest, lastEnemyKillPos, Quaternion.identity);
+                }
+                else
+                {
+                    nbrSilverChest++;
+                    Instantiate(silverChest, lastEnemyKillPos, Quaternion.identity);
                 }
             }
         }
