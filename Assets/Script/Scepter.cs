@@ -107,7 +107,7 @@ public class Scepter : MonoBehaviour {
     private void Attack(int id) {
         switch(id) {
             case 0: // Lancer Hache
-                PlayerAttack.Instance.isShooting = true;
+                PlayerAttack.Instance.isAxeShooting = true;
                 break;
 
             case 1:

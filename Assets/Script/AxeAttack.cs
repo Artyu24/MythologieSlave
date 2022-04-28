@@ -92,7 +92,7 @@ public class AxeAttack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") && collision.gameObject == enemyTarget)
         {
             EnemyHealth enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
             if (!enemyStrikeList.Contains(enemyHealth))

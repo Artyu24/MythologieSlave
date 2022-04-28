@@ -9,6 +9,10 @@ TagManager:
   - Hammer
   - PlayerSpawn
   - PlayerHealthBar
+  - ChestUI
+  - SilverChest
+  - GoldChest
+  - PlayerShieldBar
   - Totem
   layers:
   - Default

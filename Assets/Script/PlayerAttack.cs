@@ -6,14 +6,22 @@ using Uduino;
 
 public class PlayerAttack : MonoBehaviour {
 
+    [Header("AutoAttack")]
+    public bool isAutoShooting;
+    [SerializeField] private Bullet bullet;
+    [SerializeField] private Transform spawnBulletPoint;
+    private float bulletDelay;
+    private float bulletSpeed = 5;
+    private int bulletDamage = 50;
+
 
     [Header("Competence 1")]
-    public bool isShooting;
-    private float delay;
+    public bool isAxeShooting;
+    private float axeDelay;
     [SerializeField] private AxeAttack axe;
     [SerializeField] private Transform spawnAxePoint;
-    public float bulletSpeed = 5;
-    public int bulletDamage = 50;
+    public float axeSpeed = 5;
+    public int axeDamage = 50;
     public int nbrEnemyStrike = 20;
 
     private bool isActive;
@@ -72,26 +80,51 @@ public class PlayerAttack : MonoBehaviour {
      void FixedUpdate() {
         //SHOOT
         if (!isActive)
-            delay += Time.fixedDeltaTime;
+        {
+            axeDelay += Time.fixedDeltaTime;
+            bulletDelay += Time.fixedDeltaTime;
+        }
 
-        if (isShooting && delay >= 1f) {
-            delay = 0;
+        if (isAutoShooting && bulletDelay >= 0.25f)
+        {
+            bulletDelay = 0;
+            Bullet actualBullet = Instantiate(bullet, spawnBulletPoint.position, Quaternion.identity);
+            actualBullet.GetSpeed = bulletSpeed;
+            actualBullet.GetDamage = bulletDamage;
+        }
+
+        if (isAxeShooting && axeDelay >= 1f) {
+            axeDelay = 0;
             isActive = true;
             AxeAttack axeObject = Instantiate(axe, spawnAxePoint.position, Quaternion.identity);
-            axeObject.Speed = bulletSpeed;
-            axeObject.Damage = bulletDamage;
+            axeObject.Speed = axeSpeed;
+            axeObject.Damage = axeDamage;
             axeObject.NbrEnemyStrikeMax = nbrEnemyStrike;
         }
     }
 
-    public void Shoot(InputAction.CallbackContext context)
+    public void AutoShoot(InputAction.CallbackContext context)
     {
         if (context.performed)
-            isShooting = true;
+            isAutoShooting = true;
         else if (context.canceled)
-            isShooting = false;
+            isAutoShooting = false;
     }
 
+    public void AxeShoot(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            isAxeShooting = true;
+        else if (context.canceled)
+            isAxeShooting = false;
+    }
+
+    //Upgrade damage when Item Get
+    public void UpgradeDamage(int damage)
+    {
+        bulletDamage += damage;
+        axeDamage += damage;
+    }
 
     public void OnSkillSpawn(InputAction.CallbackContext e) {
         if(e.performed) {
