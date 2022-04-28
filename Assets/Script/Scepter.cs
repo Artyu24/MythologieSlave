@@ -46,10 +46,6 @@ public class Scepter : MonoBehaviour {
 
             Joycon joycon = joycons[0];
 
-            //   accel = new Vector3((int)joycon.GetAccel().x, (int)joycon.GetAccel().y, (int)joycon.GetAccel().z);
-            accel = joycon.GetAccel();
-            gyro = joycon.GetGyro();
-
             if (_coroutine == null && joycon.GetAccel().magnitude > _magnitudeThreshold)  {
                 _coroutine = StartCoroutine(WaitNextCheckData());
                 IEnumerator WaitNextCheckData() {
@@ -67,29 +63,32 @@ public class Scepter : MonoBehaviour {
                     float averageY = gyroSave.Select(i => i.y).Average();
                     float averageZ = gyroSave.Select(i => i.z+1).Average();
 
+                    Debug.Log("averageX : " + averageX + " averageY: " + averageY + " averageZ: " + averageZ);
+
                     // Decide sort
                     if(Mathf.Abs(averageY) > Mathf.Abs(averageX) && 
                         Mathf.Abs(averageY) > Mathf.Abs(averageZ) && 
                         averageY < 0) {
                         Debug.Log("Tonnerre !");
-                        Attack(0);
+                     //   Attack(0);
                     }
                     else if(Mathf.Abs(averageX) > Mathf.Abs(averageY) && 
                         Mathf.Abs(averageX) > Mathf.Abs(averageZ) &&
-                        averageX > 0) {
-                        Attack(4);
+                        averageX < 0) {
+                        Debug.Log("laser");
+                       // Attack(4);
                     }
-                    else if(Mathf.Abs(averageZ) > Mathf.Abs(averageY) &&
+                   /* else if(Mathf.Abs(averageZ) > Mathf.Abs(averageY) &&
                         Mathf.Abs(averageZ) > Mathf.Abs(averageX)) {
                         if(averageZ < 0) {
-                            Debug.Log("fertilité");
+                            Debug.Log("fertilitï¿½");
                             Attack(2);
                         }
                         else {
                             Debug.Log("marteau");
                             Attack(3);
                         }
-                    }
+                    }*/
                     else {
                         Debug.Log("Je sais pas");
                     }

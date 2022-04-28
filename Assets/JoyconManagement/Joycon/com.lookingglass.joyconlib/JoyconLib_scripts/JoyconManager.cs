@@ -52,7 +52,7 @@ public class JoyconManager: MonoBehaviour
 		while (ptr != IntPtr.Zero) {
 			enumerate = (hid_device_info)Marshal.PtrToStructure (ptr, typeof(hid_device_info));
 
-			Debug.Log (enumerate.product_id);
+			//Debug.Log (enumerate.product_id);
 				if (enumerate.product_id == product_l || enumerate.product_id == product_r) {
 					if (enumerate.product_id == product_l) {
 						isLeft = true;
@@ -77,7 +77,7 @@ public class JoyconManager: MonoBehaviour
     {
 		for (int i = 0; i < j.Count; ++i)
 		{
-			Debug.Log (i);
+		//	Debug.Log (i);
 			Joycon jc = j [i];
 			byte LEDs = 0x0;
 			LEDs |= (byte)(0x1 << i);
