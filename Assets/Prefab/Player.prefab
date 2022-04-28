@@ -169,7 +169,6 @@ GameObject:
   - component: {fileID: 1191459452275201295}
   - component: {fileID: 1191459452275201281}
   - component: {fileID: 4446530409718713872}
-  - component: {fileID: 1191459452275201286}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -315,7 +314,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1191459452275201281}
         m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
-        m_MethodName: Shoot
+        m_MethodName: AxeShoot
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -328,10 +327,18 @@ MonoBehaviour:
     m_ActionId: 3fac9785-9638-4aea-bb99-1be3cfba6eb2
     m_ActionName: Gameplay/Shoot[/XInputControllerWindows/rightTrigger]
   - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b153bce4-9fd4-446b-bafc-c5190fb7a1ec
+    m_ActionName: Gameplay/CompetenceOne
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3c47896d-399f-4a04-993b-1e67e2a8133b
+    m_ActionName: Gameplay/Attack
+  - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1191459452275201286}
-        m_TargetAssemblyTypeName: CompetenceOne, Assembly-CSharp
-        m_MethodName: Shoot
+      - m_Target: {fileID: 1191459452275201281}
+        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
+        m_MethodName: AutoShoot
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -341,8 +348,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: b153bce4-9fd4-446b-bafc-c5190fb7a1ec
-    m_ActionName: Gameplay/CompetenceOne
+    m_ActionId: df60a8ff-4cf2-4418-97ef-77201e6fdc44
+    m_ActionName: Gameplay/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -408,6 +415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  collideWithTotem: 0
 --- !u!114 &1191459452275201281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,12 +428,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edae6b6546ad2bf408c15f8c637e1565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAutoShooting: 0
   bullet: {fileID: -8271817254071194722, guid: a46d574c73c061242b9c71a80efb4844, type: 3}
   spawnBulletPoint: {fileID: 1191459453106534622}
+  isAxeShooting: 0
+  axe: {fileID: 4004230643325152201, guid: b1f52f1851defd84092deffe3dd643d3, type: 3}
+  spawnAxePoint: {fileID: 1191459453106534622}
+  axeSpeed: 5
+  axeDamage: 50
+  nbrEnemyStrike: 20
+  allyPrefab: {fileID: 3035193102477843049, guid: 11bae37fc7db93a4c94bf56bf1933951, type: 3}
   cooldownTwo: 0
   isInCooldownTwo: 0
+  maxSpawnAllies: 1
+  spawnAlliesDelay: 0
+  spawnAlliesRange: 0
+  hammerPrefab: {fileID: 5798760719466974605, guid: 4680a948dd030f944a53453aee5d5a81, type: 3}
+  maxTimerHammer: 0
+  hammerSpeed: {x: 0, y: 0}
+  radiusArea: 0
+  hammerAttack: 0
   rayDistance: 0
-  rays: []
+  damageRay: 0
+  rayPrefab: {fileID: 3165213853828787042, guid: 7a096dd4fb6e8d042b602bb5bd671b95, type: 3}
 --- !u!114 &4446530409718713872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,23 +467,6 @@ MonoBehaviour:
   shieldSlider: {fileID: 0}
   Low: {r: 0.8, g: 0.042993013, b: 0, a: 1}
   High: {r: 0, g: 0.77254903, b: 0.026518578, a: 1}
---- !u!114 &1191459452275201286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1191459452275201294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07d9c42df9499404697293c7f5296535, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  axe: {fileID: 4004230643325152201, guid: b1f52f1851defd84092deffe3dd643d3, type: 3}
-  spawnAxePoint: {fileID: 1191459453106534622}
-  bulletSpeed: 5
-  bulletDamage: 50
-  nbrEnemyStrike: 20
 --- !u!1 &1191459453106534617
 GameObject:
   m_ObjectHideFlags: 0

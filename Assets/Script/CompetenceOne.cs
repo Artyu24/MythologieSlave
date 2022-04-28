@@ -14,13 +14,13 @@ public class CompetenceOne : MonoBehaviour
         if (!isActive)
             delay += Time.fixedDeltaTime;
 
-        if (isShooting && delay >= 1f)
+        if (isAxeShooting && delay >= 1f)
         {
             delay = 0;
             isActive = true;
             AxeAttack axeObject = Instantiate(axe, spawnAxePoint.position, Quaternion.identity);
-            axeObject.Speed = bulletSpeed;
-            axeObject.Damage = bulletDamage;
+            axeObject.Speed = axeSpeed;
+            axeObject.Damage = axeDamage;
             axeObject.NbrEnemyStrikeMax = nbrEnemyStrike;
         }
     }
@@ -28,9 +28,9 @@ public class CompetenceOne : MonoBehaviour
     public void Shoot(InputAction.CallbackContext context)
     {
         if (context.performed)
-            isShooting = true;
+            isAxeShooting = true;
         else if (context.canceled)
-            isShooting = false;
+            isAxeShooting = false;
     }
     */
 }

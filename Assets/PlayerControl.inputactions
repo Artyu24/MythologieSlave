@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Shoot",
+                    "name": "Axe",
                     "type": "Button",
                     "id": "3fac9785-9638-4aea-bb99-1be3cfba6eb2",
                     "expectedControlType": "Button",
@@ -58,13 +58,22 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "AutoAttack",
+                    "type": "Button",
+                    "id": "df60a8ff-4cf2-4418-97ef-77201e6fdc44",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "beff058d-10a5-4815-876c-11af9cb2406c",
-                    "path": "<Gamepad>/rightStick",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -146,6 +155,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "ScrollRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7d23f3c2-80d0-4b49-a83d-1c1775e59cdb",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Axe",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c6aa1ee9-a2f7-473a-9316-5a4f00214c86",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AutoAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

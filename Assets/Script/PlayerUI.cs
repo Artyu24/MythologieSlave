@@ -22,12 +22,10 @@ public class PlayerUI : MonoBehaviour
 
     private IEnumerator AffichageUI()
     {
-        Debug.Log("debut");
         img.color = new Color(255, 255, 255, 255);
         text.color = new Color(255, 255, 255, 255);
         yield return new WaitForSeconds(1f);
         img.color = new Color(255, 255, 255, 0);
         text.color = new Color(255, 255, 255, 0);
-        Debug.Log("fin");
     }
 }
