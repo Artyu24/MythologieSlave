@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: -8218713775148295191}
   - component: {fileID: 8577633526979350926}
   m_Layer: 0
-  m_Name: DeusOrbe
-  m_TagString: Untagged
+  m_Name: OrbeFertilite
+  m_TagString: Fertilite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0.80542046, g: 0.8962264, b: 0.25787643, a: 1}
+  m_Color: {r: 0.4811321, g: 0.2233853, b: 0.020425411, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -112,5 +112,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb1e01d228c9974d8ee2e1d35ab7b4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orb: 0
-  dialogName: FireGod
