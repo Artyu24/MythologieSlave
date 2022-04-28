@@ -28,8 +28,11 @@ public class GameManager : MonoBehaviour
     [Header("List of Event by Time")]
     [SerializeField] private List<float> minutesPerEventList = new List<float>();
 
-    [Header("Kill enemy")]
+    [Header("Enemy")] 
+    [SerializeField] private AnimationCurve enemySpawnEvolution;
     [SerializeField] private float enemyToKill = 20;
+    [SerializeField] private float delayStartBtwEachEnemy = 1;
+    [SerializeField] private float delayEndBtwEachEnemy = 0.5f;
     public static int enemyKill;
     public static Vector3 lastEnemyKillPos;
 
@@ -102,6 +105,8 @@ public class GameManager : MonoBehaviour
         else if (gameState == GameState.InGame)
         {
             timeInGame += Time.deltaTime;
+
+            EnemySpawnManager.timeBtwEachSpawn = Mathf.Lerp(delayStartBtwEachEnemy, delayEndBtwEachEnemy, enemySpawnEvolution.Evaluate(timeInGame));
 
             for(int i = 0; i < minutesPerEventList.Count;)
             {

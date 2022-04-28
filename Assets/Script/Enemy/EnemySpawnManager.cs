@@ -9,7 +9,7 @@ public class EnemySpawnManager : MonoBehaviour
     [SerializeField] private GameObject enemyMelee, enemyDistance;
 
     private float delay;
-    private float timeBtwEachSpawn = 1f;
+    public static float timeBtwEachSpawn = 1f;
     public float TimeBtwEachSpawn { get => timeBtwEachSpawn; set => timeBtwEachSpawn = value; }
 
     private void Update()
