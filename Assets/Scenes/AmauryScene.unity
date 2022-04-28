@@ -1658,27 +1658,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edae6b6546ad2bf408c15f8c637e1565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasThunderSkill: 0
+  isAutoShooting: 0
+  bullet: {fileID: 0}
+  spawnBulletPoint: {fileID: 0}
+  hasThunderSkill: 1
   isShooting: 0
+  isAxeShooting: 0
   axe: {fileID: 4004230643325152201, guid: b1f52f1851defd84092deffe3dd643d3, type: 3}
   spawnAxePoint: {fileID: 1277129382}
-  bulletSpeed: 5
-  bulletDamage: 50
+  axeSpeed: 5
+  axeDamage: 50
   nbrEnemyStrike: 20
-  hasFertilitySkill: 0
+  hasFertilitySkill: 1
   allyPrefab: {fileID: 3035193102477843049, guid: 11bae37fc7db93a4c94bf56bf1933951, type: 3}
   cooldownTwo: 0
   isInCooldownTwo: 0
   maxSpawnAllies: 1
   spawnAlliesDelay: 1
   spawnAlliesRange: 2
-  hasHammerSkill: 0
+  allyDamage: 0
+  hasHammerSkill: 1
   hammerPrefab: {fileID: 5798760719466974605, guid: 4680a948dd030f944a53453aee5d5a81, type: 3}
   maxTimerHammer: 5
   hammerSpeed: {x: 3, y: 5}
   radiusArea: 3
   hammerAttack: 3
-  hasRaySkill: 0
+  hasRaySkill: 1
   rayDistance: 5
   damageRay: 0
   rayPrefab: {fileID: 3165213853828787042, guid: 7a096dd4fb6e8d042b602bb5bd671b95, type: 3}

@@ -70,25 +70,24 @@ public class Scepter : MonoBehaviour {
                         Mathf.Abs(averageY) > Mathf.Abs(averageZ) && 
                         averageY < 0) {
                         Debug.Log("Tonnerre !");
-                     //   Attack(0);
+                        Attack(0);
                     }
                     else if(Mathf.Abs(averageX) > Mathf.Abs(averageY) && 
-                        Mathf.Abs(averageX) > Mathf.Abs(averageZ) &&
-                        averageX < 0) {
+                        Mathf.Abs(averageX) > Mathf.Abs(averageZ)) {
                         Debug.Log("laser");
-                       // Attack(4);
+                        Attack(3);
                     }
-                   /* else if(Mathf.Abs(averageZ) > Mathf.Abs(averageY) &&
+                    else if(Mathf.Abs(averageZ) > Mathf.Abs(averageY) &&
                         Mathf.Abs(averageZ) > Mathf.Abs(averageX)) {
                         if(averageZ < 0) {
                             Debug.Log("fertilit�");
-                            Attack(2);
+                            Attack(1);
                         }
                         else {
                             Debug.Log("marteau");
-                            Attack(3);
+                            Attack(2);
                         }
-                    }*/
+                    }
                     else {
                         Debug.Log("Je sais pas");
                     }
@@ -99,7 +98,9 @@ public class Scepter : MonoBehaviour {
 
 
             }
+            
 
+           
         }
     }
 
@@ -110,12 +111,14 @@ public class Scepter : MonoBehaviour {
                 break;
 
             case 1:
+                PlayerAttack.Instance.OnSkillSpawn();
                 break;
 
             case 2:
+                PlayerAttack.Instance.OnSkillHammer();
                 break;
 
-            case 4: // Laser
+            case 3: // Laser
                 PlayerAttack.Instance.OnLaserSkill();
                 break;
 

@@ -58984,6 +58984,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7264008346707161154, guid: 9725f9f0fe048be45b0ff3bf51c33da0, type: 3}
+      propertyPath: hasRaySkill
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264008346707161154, guid: 9725f9f0fe048be45b0ff3bf51c33da0, type: 3}
+      propertyPath: hasHammerSkill
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264008346707161154, guid: 9725f9f0fe048be45b0ff3bf51c33da0, type: 3}
+      propertyPath: hasThunderSkill
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264008346707161154, guid: 9725f9f0fe048be45b0ff3bf51c33da0, type: 3}
+      propertyPath: hasFertilitySkill
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7264008346707161155, guid: 9725f9f0fe048be45b0ff3bf51c33da0, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -59034,7 +59050,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8882090909920018251, guid: 9725f9f0fe048be45b0ff3bf51c33da0, type: 3}
       propertyPath: _mesureTime
-      value: 0.15
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8882090909920018251, guid: 9725f9f0fe048be45b0ff3bf51c33da0, type: 3}
+      propertyPath: _magnitudeThreshold
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9725f9f0fe048be45b0ff3bf51c33da0, type: 3}

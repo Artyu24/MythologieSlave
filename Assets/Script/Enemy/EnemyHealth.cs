@@ -56,6 +56,10 @@ public class EnemyHealth : MonoBehaviour
 
     private void SetHealth()
     {
+
+        if (slider == null)
+            return;
+
         slider.gameObject.SetActive(life < maxLife);
 
         slider.maxValue = maxLife;
@@ -67,6 +71,11 @@ public class EnemyHealth : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.tag == "Laser") {
             TakeDamage(PlayerAttack.Instance.damageRay);
+        }
+
+        if(collision.tag == "AllyBullet") {
+            TakeDamage(PlayerAttack.Instance.allyDamage);
+            Destroy(collision.gameObject);
         }
     }
 
