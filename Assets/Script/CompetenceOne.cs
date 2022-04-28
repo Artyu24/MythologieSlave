@@ -5,18 +5,10 @@ using UnityEngine.InputSystem;
 
 public class CompetenceOne : MonoBehaviour
 {
-    private bool isShooting;
-    private float delay;
-    [SerializeField] private AxeAttack axe;
-    [SerializeField] private Transform spawnAxePoint;
-    public float bulletSpeed = 5;
-    public int bulletDamage = 50;
-    public int nbrEnemyStrike = 20;
+    
 
-    private bool isActive;
-    public bool IsActive { get => isActive; set => isActive = value; }
 
-    void FixedUpdate()
+    /*void FixedUpdate()
     {
         //SHOOT
         if (!isActive)
@@ -40,4 +32,5 @@ public class CompetenceOne : MonoBehaviour
         else if (context.canceled)
             isShooting = false;
     }
+    */
 }

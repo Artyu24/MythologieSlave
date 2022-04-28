@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -18,11 +19,16 @@ public class Scepter : MonoBehaviour {
     public Vector3 accel;
     public Vector3 gyro;
 
-    private List<int> gyroXDatas;
-    private List<int> gyroZDatas;
+    List<Vector3> gyroSave = new List<Vector3>();
 
     private float timer;
     private bool hasFinishCheck = true;
+
+    [Header("Config")]
+    [SerializeField] float _mesureTime = 1f;
+    [SerializeField] float _magnitudeThreshold = 2f;
+
+    Coroutine _coroutine;
 
     public static Scepter Instance { get; private set; }
 
@@ -32,65 +38,92 @@ public class Scepter : MonoBehaviour {
 
     void Start() {
         joycons = JoyconManager.Instance.j;
-
-        
     }
 
     void Update() {
 
         if (joycons.Count > 0) {
 
-            Joycon joycon = joycons[1];
+            Joycon joycon = joycons[0];
 
             //   accel = new Vector3((int)joycon.GetAccel().x, (int)joycon.GetAccel().y, (int)joycon.GetAccel().z);
             accel = joycon.GetAccel();
             gyro = joycon.GetGyro();
 
-            if ((int)joycon.GetAccel().x < 0 && (int)joycon.GetAccel().x <= accelSpeed && hasFinishCheck) {
-                Debug.Log("attack 01");
-                hasFinishCheck = false;
-                StartCoroutine(WaitNextCheckData());
+            if (_coroutine == null && joycon.GetAccel().magnitude > _magnitudeThreshold)  {
+                _coroutine = StartCoroutine(WaitNextCheckData());
+                IEnumerator WaitNextCheckData() {
+                    Joycon joycon = joycons[0];
+
+                    gyroSave = new List<Vector3>();
+                    while (timer < _mesureTime) {
+                        timer += Time.deltaTime;
+                        gyroSave.Add(joycon.GetAccel());
+                        yield return null;
+                    }
+
+                    timer = 0;
+                    float averageX = gyroSave.Select(i => i.x).Average();
+                    float averageY = gyroSave.Select(i => i.y).Average();
+                    float averageZ = gyroSave.Select(i => i.z+1).Average();
+
+                    // Decide sort
+                    if(Mathf.Abs(averageY) > Mathf.Abs(averageX) && 
+                        Mathf.Abs(averageY) > Mathf.Abs(averageZ) && 
+                        averageY < 0) {
+                        Debug.Log("Tonnerre !");
+                        Attack(0);
+                    }
+                    else if(Mathf.Abs(averageX) > Mathf.Abs(averageY) && 
+                        Mathf.Abs(averageX) > Mathf.Abs(averageZ) &&
+                        averageX > 0) {
+                        Attack(4);
+                    }
+                    else if(Mathf.Abs(averageZ) > Mathf.Abs(averageY) &&
+                        Mathf.Abs(averageZ) > Mathf.Abs(averageX)) {
+                        if(averageZ < 0) {
+                            Debug.Log("fertilité");
+                            Attack(2);
+                        }
+                        else {
+                            Debug.Log("marteau");
+                            Attack(3);
+                        }
+                    }
+                    else {
+                        Debug.Log("Je sais pas");
+                    }
+
+                    _coroutine = null;
+                    yield break;
+                }
+
+
             }
 
-            Debug.Log("gyroX: " + (int)joycon.GetGyro().x + " gyroZ: " + (int)joycon.GetGyro().z );
-
-
-            if(hasFinishCheck && gyroXDatas.Count > 0) {
-                int sumX = 0,sumZ = 0;
-
-                foreach(int xData in gyroXDatas) 
-                    sumX += xData;
-
-                int averageX = sumX / gyroXDatas.Count;
-
-                foreach (int zData in gyroZDatas)
-                    sumZ += zData;
-
-                int averageZ = sumZ / gyroZDatas.Count;
-
-                gyroXDatas.Clear();
-                gyroZDatas.Clear();
-            }
         }
     }
 
-    private IEnumerator WaitNextCheckData() {
-        yield return null;
+    private void Attack(int id) {
+        switch(id) {
+            case 0: // Lancer Hache
+                PlayerAttack.Instance.isShooting = true;
+                break;
 
-        Joycon joycon = joycons[1];
+            case 1:
+                break;
 
-        gyroXDatas.Add((int)joycon.GetGyro().x);
-        gyroZDatas.Add((int)joycon.GetGyro().z);
+            case 2:
+                break;
 
-        timer += Time.deltaTime;
+            case 4: // Laser
+                PlayerAttack.Instance.OnLaserSkill();
+                break;
 
-        if (timer < 1f)
-            StartCoroutine(WaitNextCheckData());
-        else {
-            timer = 0;
-            hasFinishCheck = true;
         }
     }
+
+    
 
    
 }

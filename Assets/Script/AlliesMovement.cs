@@ -23,6 +23,8 @@ public class AlliesMovement : MonoBehaviour {
     }
 
     void Update() {
+        transform.position = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).position;
+
         GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
 
         float nearbyDistance = float.MaxValue;
@@ -43,13 +45,6 @@ public class AlliesMovement : MonoBehaviour {
 
             if(timer >= attackReload) {
                 timer = 0;
-
-                Vector3 pos = transform.position;
-                pos.Normalize();
-
-                float dotProduct = Vector3.Dot(pos, targetEnemy.transform.position - transform.position);
-
-                Debug.Log("dotProduct: " + dotProduct);
 
                 direction = (targetEnemy.transform.position - transform.position).normalized;
 

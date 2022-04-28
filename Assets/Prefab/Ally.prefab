@@ -117,8 +117,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4937544945033443067, guid: e6cf4a28a8307414289b48cf84662881, type: 3}
   detectionRange: 10
   speed: 5
-  attackSpeed: 0
-  attackReload: 0
+  attackSpeed: 5
+  attackReload: 2
 --- !u!50 &3035193102477843050
 Rigidbody2D:
   serializedVersion: 4
@@ -152,3 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a206dd768d5f44ea0162d661d19916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slider: {fileID: 0}
+  Low: {r: 0, g: 0, b: 0, a: 0}
+  High: {r: 0, g: 0, b: 0, a: 0}
+  offset: {x: 0, y: 0, z: 0}

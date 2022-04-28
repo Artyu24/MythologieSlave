@@ -9,6 +9,7 @@ TagManager:
   - Hammer
   - PlayerSpawn
   - PlayerHealthBar
+  - Totem
   layers:
   - Default
   - TransparentFX

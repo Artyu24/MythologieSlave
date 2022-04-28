@@ -1,0 +1,149 @@
+{
+"dialogs": 
+    [
+		{
+			"Author": "",
+			"Name": "AskShop",
+			"Content": [
+				"Voulez vous aller au shop ? "
+			],
+			"NeedAnswer": true,
+			"Answers": [
+				"Oui\nNon"
+			]
+		},
+		{
+			"Author": "",
+			"Name": "HoverItem_DoubleDice",
+			"Content": [
+				"Le dé double multiplie par deux votre lancé de dé à chaque fois que vous l'utilisez. "
+			],
+			"NeedAnswer": false,
+			"Answers": []
+		},
+		{
+			"Author": "",
+			"Name": "HoverItem_TripleDice",
+			"Content": [
+				"Le dé triple multiplie par trois votre lancé de dé à chaque fois que vous l'utilisez. "
+			],
+			"NeedAnswer": false,
+			"Answers": []
+		},
+		{
+			"Author": "",
+			"Name": "HoverItem_ReverseDice",
+			"Content": [
+				"Le dé inverse vous fait allez dans le sens opposé à chaque utilisation et pendant 1 tour. "
+			],
+			"NeedAnswer": false,
+			"Answers": []
+		},
+		{
+			"Author": "",
+			"Name": "HoverItem_Shell",
+			"Content": [
+				"Surfez sur cette carapace et allez beaucoup plus vite dans vos déplacements.Gare à ceux qui se trouvent sur votre chemin. "
+			],
+			"NeedAnswer": false,
+			"Answers": []
+		},
+		{
+			"Author": "",
+			"Name": "HoverItem_Lightning",
+			"Content": [
+				"Vous déclenchez la fureur de Zeus qui s'abat sur un endroit de la carte. "
+			],
+			"NeedAnswer": false,
+			"Answers": []
+		},
+		{
+			"Author": "",
+			"Name": "HoverItem_Hourglass",
+			"Content": [
+				"Vous changez le moment de la journée. "
+			],
+			"NeedAnswer": false,
+			"Answers": []
+		},
+		{
+			"Author": "",
+			"Name": "BuyItem",
+			"Content": [
+				"Êtes vous de sur de vouloir acheter "
+			],
+			"NeedAnswer": true,
+			"Answers": [
+				"Oui\nNon"
+			]
+		},
+		{
+			"Author": "",
+			"Name": "NotEnoughMoneyShop",
+			"Content": [
+				"Désolé mais vous n'avez pas assez d'argent pour acheter cet objet "
+			],
+			"NeedAnswer": false,
+			"Answers": []
+		},
+		{
+			"Author": "",
+			"Name": "EndShop",
+			"Content": [
+				"Merci pour votre achat. A la prochaine ! "
+			],
+			"NeedAnswer": false,
+			"Answers": []
+		},
+		{
+			"Author": "",
+			"Name": "AskChestBuy",
+			"Content": [
+				"Voulez-vous ouvrir le coffre ? Cela vous coûtera 30 pièces. "
+			],
+			"NeedAnswer": true,
+			"Answers": [
+				"Oui\nNon"
+			]
+		},	
+		{
+			"Author": "",
+			"Name": "NotEnoughMoneyChest",
+			"Content": [
+				"Vous n'avez pas assez de pièces pour ouvrir le coffre. "
+			],
+			"NeedAnswer": false,
+			"Answers": []
+		},		
+		{
+			"Author": "",
+			"Name": "FindNewCode",
+			"Content": [
+				"Vous venez de débloquer un nouveau chiffre du code secret. Il s'agit du chiffre %n. Il vous reste %b chiffre(s) à trouver. "
+			],
+			"NeedAnswer": false,
+			"Answers": []
+		},		
+		{
+			"Author": "",
+			"Name": "FindAllSecretCode",
+			"Content": [
+				"Vous venez de trouver l'intégralité du code secret. Vous pouvez désormais vous rendre vers la dernière île. "
+			],
+			"NeedAnswer": false,
+			"Answers": []
+		
+		},
+		{
+			"Author": "",
+			"Name": "QuitGame",
+			"Content": [
+				"Ëtes vous sur de vouloir quitter ? Vos données seront sauvegardées et vous pourrez relancer la partie."
+			],
+			"NeedAnswer": true,
+			"Answers": [
+				"Oui\nNon"
+			]
+		}
+    ]
+}	

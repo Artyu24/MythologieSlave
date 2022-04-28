@@ -85,7 +85,7 @@ public class AxeAttack : MonoBehaviour
                 player = allies;
         }
 
-        player.GetComponent<CompetenceOne>().IsActive = false;
+        player.GetComponent<PlayerAttack>().IsActive = false;
         enemyStrikeList.Clear();
         Destroy(gameObject);
     }

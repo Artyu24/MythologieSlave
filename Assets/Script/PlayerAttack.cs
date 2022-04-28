@@ -8,14 +8,17 @@ public class PlayerAttack : MonoBehaviour {
 
 
     [Header("Competence 1")]
-
-    private bool isShooting;
+    public bool isShooting;
     private float delay;
-    [SerializeField] private Bullet bullet;
-    [SerializeField] private Transform spawnBulletPoint;
+    [SerializeField] private AxeAttack axe;
+    [SerializeField] private Transform spawnAxePoint;
+    public float bulletSpeed = 5;
+    public int bulletDamage = 50;
+    public int nbrEnemyStrike = 20;
 
-    private float bulletSpeed = 5;
-    private int bulletDamage = 50;
+    private bool isActive;
+    public bool IsActive { get => isActive; set => isActive = value; }
+
 
     [Header("Competence 2")]
     public GameObject allyPrefab;
@@ -31,18 +34,19 @@ public class PlayerAttack : MonoBehaviour {
 
     [Header("Competence 3")]
     public GameObject hammerPrefab;
-    public float spawnRange;
-    public int spawnMin;
-    public int spawnMax;
-    public float spawnDelay;
-    private int maxSpawn;
-    private int actualSpawn;
+    public int maxTimerHammer;
+    public Vector2 hammerSpeed;
+    private float timer;
+    private float spawnDelay = 0.3f;
+    private bool rightDir = true;
+    public float radiusArea;
+    public int hammerAttack;
 
 
     [Header("Competence 4")]
     public float rayDistance;
-    public List<GameObject> rays;
     public int damageRay;
+    public GameObject rayPrefab;
 
     public static PlayerAttack Instance { get; set; }
 
@@ -65,16 +69,18 @@ public class PlayerAttack : MonoBehaviour {
 
     }
 
-    void FixedUpdate() {
+     void FixedUpdate() {
         //SHOOT
-        delay += Time.fixedDeltaTime;
+        if (!isActive)
+            delay += Time.fixedDeltaTime;
 
-        if (isShooting && delay >= 0.25f)
-        {
+        if (isShooting && delay >= 1f) {
             delay = 0;
-            Bullet actualBullet = Instantiate(bullet, spawnBulletPoint.position, Quaternion.identity);
-            actualBullet.GetSpeed = bulletSpeed;
-            actualBullet.GetDamage = bulletDamage;
+            isActive = true;
+            AxeAttack axeObject = Instantiate(axe, spawnAxePoint.position, Quaternion.identity);
+            axeObject.Speed = bulletSpeed;
+            axeObject.Damage = bulletDamage;
+            axeObject.NbrEnemyStrikeMax = nbrEnemyStrike;
         }
     }
 
@@ -101,22 +107,10 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     public void SpawnAllies() {
-        Vector3 beginRandom = transform.position - transform.right * spawnAlliesRange;
-        Vector3 endRandom = transform.position + transform.right * spawnAlliesRange;
-
-        Vector3 shieldBegin = transform.position - transform.right * 1.5f;
-        Vector3 shieldEnd = transform.position + transform.right * 1.5f;
-
-        float spawnX = Random.Range(beginRandom.x, endRandom.x);
-        float spawnY = Random.Range(transform.position.y - 5, transform.position.y + 5);
-
-        while (spawnX >= shieldBegin.x && spawnX <= shieldEnd.x) 
-            spawnX = Random.Range(beginRandom.x, endRandom.x);
         
-        while (spawnY >= (transform.position.y - 1) && spawnY <= (transform.position.y + 1))
-            spawnY = Random.Range(transform.position.y - 5, transform.position.y + 5);
+        GameObject ally = Instantiate(allyPrefab, transform.GetChild(0).position, Quaternion.identity);
 
-        Instantiate(allyPrefab, new Vector3(spawnX, spawnY, 0f), Quaternion.identity);
+        ally.transform.parent = transform;
 
         StartCoroutine(WaitToSpawnAllies());
     }
@@ -135,39 +129,47 @@ public class PlayerAttack : MonoBehaviour {
 
     public void OnSkillHammer(InputAction.CallbackContext e) {
         if(e.performed) {
-            maxSpawn = Random.Range(spawnMin, spawnMax);
             SpawnHammer();
         }
     }
 
     private IEnumerator WaitToSpawnHammer() {
         yield return new WaitForSeconds(spawnDelay);
-        
-        actualSpawn++;
 
-        if(actualSpawn < maxSpawn)
+        foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy")) {
+            float distance = Vector3.Distance(enemy.transform.position, transform.position);
+
+            if(distance <= radiusArea) {
+                if(enemy.TryGetComponent<EnemyHealth>(out EnemyHealth health))  {
+                    health.TakeDamage(hammerAttack);
+                }
+            }
+        }
+
+        timer += spawnDelay;
+
+        if(timer < maxTimerHammer) {
             SpawnHammer();
+        }
     }
 
     private void SpawnHammer() {
-        Vector3 beginRandom = transform.position - transform.right * spawnRange;
-        Vector3 endRandom = transform.position + transform.right * spawnRange;
+        GameObject hammer = Instantiate(hammerPrefab,transform.position,Quaternion.Euler(0,0,-180));
 
-        Vector3 shieldBegin = transform.position - transform.right * 1.5f;
-        Vector3 shieldEnd = transform.position + transform.right * 1.5f;
+        hammerSpeed.x = Random.Range(1, radiusArea);
 
-        beginRandom.y = Camera.main.transform.position.y + Camera.main.orthographicSize;
-        endRandom.y = Camera.main.transform.position.y + Camera.main.orthographicSize;
+        Vector3 force = rightDir ? transform.right * hammerSpeed.x : transform.right * -1 * hammerSpeed.x;
+        force.y = hammerSpeed.y;
 
-        float spawnX = Random.Range(beginRandom.x,endRandom.x);
+        hammer.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
 
-        while(spawnX >= shieldBegin.x && spawnX <= shieldEnd.x) {
-            spawnX = Random.Range(beginRandom.x, endRandom.x);
-        }
-
-        Instantiate(hammerPrefab,new Vector3(spawnX,beginRandom.y - 0.5f,beginRandom.z),Quaternion.Euler(0,0,-180));
-
+        rightDir = !rightDir;
         StartCoroutine(WaitToSpawnHammer());
+    }
+
+
+    public void OnLaserSkill() {
+        Instantiate(rayPrefab, transform.position,Quaternion.identity);
     }
 
     #endregion
