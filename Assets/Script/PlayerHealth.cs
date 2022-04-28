@@ -16,8 +16,10 @@ public class PlayerHealth : MonoBehaviour
     {
         GameObject healthBar = GameObject.FindGameObjectWithTag("PlayerHealthBar");
         GameObject shieldBar = GameObject.FindGameObjectWithTag("PlayerShieldBar");
-        healSlider = healthBar.GetComponent<Slider>();
-        shieldSlider = shieldBar.GetComponent<Slider>();
+
+        healSlider = healthBar?.GetComponent<Slider>();
+        shieldSlider = shieldBar?.GetComponent<Slider>();
+        
         life = maxLife;
         SetHealth();
         SetShield();
@@ -61,6 +63,9 @@ public class PlayerHealth : MonoBehaviour
 
     private void SetHealth()
     {
+        if(healSlider == null)
+            return;
+
         healSlider.maxValue = maxLife;
         healSlider.value = life;
 
@@ -74,6 +79,10 @@ public class PlayerHealth : MonoBehaviour
 
     private void SetShield()
     {
+        if(shieldSlider == null) {
+            return;
+        }
+
         shieldSlider.gameObject.SetActive(shield > 0);
         shieldSlider.maxValue = maxShield;
         shieldSlider.value = shield;
