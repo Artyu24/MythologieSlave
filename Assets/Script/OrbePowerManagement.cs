@@ -73,7 +73,7 @@ public class OrbePowerManagement : MonoBehaviour
                 orb.transform.parent = totem.transform;
                 orb.transform.localPosition = new Vector3(0, 3.2f, 0);
 
-
+                TotemTracker.Instance.StartTracker(totem);
             }
 
 

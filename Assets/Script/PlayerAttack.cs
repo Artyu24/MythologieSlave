@@ -16,6 +16,9 @@ public class PlayerAttack : MonoBehaviour {
 
 
     [Header("Competence 1")]
+    public bool hasThunderSkill;
+    public bool isShooting;
+    private float delay;
     public bool isAxeShooting;
     private float axeDelay;
     [SerializeField] private AxeAttack axe;
@@ -29,6 +32,7 @@ public class PlayerAttack : MonoBehaviour {
 
 
     [Header("Competence 2")]
+    public bool hasFertilitySkill;
     public GameObject allyPrefab;
     public int cooldownTwo;
     private float timerTwo;
@@ -41,6 +45,7 @@ public class PlayerAttack : MonoBehaviour {
 
 
     [Header("Competence 3")]
+    public bool hasHammerSkill;
     public GameObject hammerPrefab;
     public int maxTimerHammer;
     public Vector2 hammerSpeed;
@@ -52,6 +57,7 @@ public class PlayerAttack : MonoBehaviour {
 
 
     [Header("Competence 4")]
+    public bool hasRaySkill;
     public float rayDistance;
     public int damageRay;
     public GameObject rayPrefab;
@@ -85,16 +91,8 @@ public class PlayerAttack : MonoBehaviour {
             bulletDelay += Time.fixedDeltaTime;
         }
 
-        if (isAutoShooting && bulletDelay >= 0.25f)
-        {
-            bulletDelay = 0;
-            Bullet actualBullet = Instantiate(bullet, spawnBulletPoint.position, Quaternion.identity);
-            actualBullet.GetSpeed = bulletSpeed;
-            actualBullet.GetDamage = bulletDamage;
-        }
-
-        if (isAxeShooting && axeDelay >= 1f) {
-            axeDelay = 0;
+        if (isShooting && delay >= 1f) {
+            delay = 0;
             isActive = true;
             AxeAttack axeObject = Instantiate(axe, spawnAxePoint.position, Quaternion.identity);
             axeObject.Speed = axeSpeed;
@@ -129,6 +127,9 @@ public class PlayerAttack : MonoBehaviour {
     public void OnSkillSpawn(InputAction.CallbackContext e) {
         if(e.performed) {
 
+            if (!hasFertilitySkill)
+                return;
+
             Debug.Log("debug arduino");
 
             UduinoManager.Instance.analogWrite(RED,/*(int) Scepter.Instance.spell2.r*/ 0);
@@ -162,6 +163,9 @@ public class PlayerAttack : MonoBehaviour {
 
     public void OnSkillHammer(InputAction.CallbackContext e) {
         if(e.performed) {
+            if (!hasHammerSkill)
+                return;
+
             SpawnHammer();
         }
     }
@@ -202,6 +206,9 @@ public class PlayerAttack : MonoBehaviour {
 
 
     public void OnLaserSkill() {
+        if (!hasRaySkill)
+            return;
+
         Instantiate(rayPrefab, transform.position,Quaternion.identity);
     }
 
