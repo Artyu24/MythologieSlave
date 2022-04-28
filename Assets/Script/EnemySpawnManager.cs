@@ -4,15 +4,34 @@ using UnityEngine;
 
 public class EnemySpawnManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private List<Transform> spawnPointList = new List<Transform>();
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private GameObject enemyMelee, enemyDistance;
+
+    private float delay;
+    private float timeBtwEachSpawn = 0.5f;
+    public float TimeBtwEachSpawn { get => timeBtwEachSpawn; set => timeBtwEachSpawn = value; }
+
+    private void Update()
     {
-        
+        if (GameManager.gameState == GameManager.GameState.InGame)
+        {
+            delay += Time.deltaTime;
+
+            if (delay > timeBtwEachSpawn)
+            {
+                delay = 0;
+                int i = Random.Range(0, spawnPointList.Count);
+                int y = Random.Range(0, 10);
+                if (y <= 6)
+                {
+                    Instantiate(enemyMelee, spawnPointList[i].transform.position, Quaternion.identity);
+                }
+                else
+                {
+                    Instantiate(enemyDistance, spawnPointList[i].transform.position, Quaternion.identity);
+                }
+            }
+        }
     }
 }

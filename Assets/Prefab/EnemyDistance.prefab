@@ -435,7 +435,7 @@ MonoBehaviour:
   isDistanceAttack: 1
   enemyBullet: {fileID: 4468112687433545785, guid: 7ace0fde6fd22a84bb174d0f37e3c49d, type: 3}
   timeBtwAttack: 3
-  distancePlayer: 3
+  distancePlayer: 5
   movSpeed: 4
   bulletSpeed: 2
   damage: 5

@@ -9,7 +9,7 @@ public class CompetenceOne : MonoBehaviour
     private float delay;
     [SerializeField] private AxeAttack axe;
     [SerializeField] private Transform spawnAxePoint;
-    public float bulletSpeed = 5;
+    public float bulletSpeed = 10;
     public int bulletDamage = 50;
     public int nbrEnemyStrike = 20;
 

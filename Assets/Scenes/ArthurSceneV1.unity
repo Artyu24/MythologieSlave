@@ -943,7 +943,8 @@ MonoBehaviour:
   enemySpeedTutorial: 1
   orbeSpawn: {fileID: 1662622725}
   entranceOfForest: {fileID: 1495385098}
-  minutesPerEvent: []
+  minutesPerEventList: []
+  killPerEventList: []
 --- !u!4 &1555462459
 Transform:
   m_ObjectHideFlags: 0
