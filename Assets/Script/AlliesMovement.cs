@@ -16,7 +16,7 @@ public class AlliesMovement : MonoBehaviour {
     public float attackSpeed;
     public float attackReload;
 
-    
+    private Vector3 direction;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -43,18 +43,28 @@ public class AlliesMovement : MonoBehaviour {
 
             if(timer >= attackReload) {
                 timer = 0;
-                Vector3 direction = (transform.position - targetEnemy.transform.position).normalized;
 
-                Debug.Log("direction: " + direction);
+                Vector3 pos = transform.position;
+                pos.Normalize();
 
-                GameObject bullet = Instantiate(bulletPrefab, transform.position + direction, Quaternion.identity);
-                bullet.GetComponent<Rigidbody2D>().velocity = new Vector3(attackSpeed,0,0);
+                float dotProduct = Vector3.Dot(pos, targetEnemy.transform.position - transform.position);
+
+                Debug.Log("dotProduct: " + dotProduct);
+
+                direction = (targetEnemy.transform.position - transform.position).normalized;
+
+                GameObject bullet = Instantiate(bulletPrefab, transform.position + direction * 0.3f , Quaternion.identity);
+                bullet.GetComponent<Rigidbody2D>().velocity = attackSpeed * direction;
             }
         }
         else {
             timer = 0f;
         }
 
+        if(direction != Vector3.zero)
+        {
+            Debug.DrawLine(transform.position,transform.position + direction * 5,Color.red);
+        }
 
 
         

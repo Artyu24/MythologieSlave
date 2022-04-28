@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ally
       objectReference: {fileID: 0}
+    - target: {fileID: 3035193102477843049, guid: 11bae37fc7db93a4c94bf56bf1933951, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3035193102477843051, guid: 11bae37fc7db93a4c94bf56bf1933951, type: 3}
       propertyPath: attackSpeed
       value: 5
@@ -912,7 +916,6 @@ GameObject:
   - component: {fileID: 1670233159}
   - component: {fileID: 1670233158}
   - component: {fileID: 1670233160}
-  - component: {fileID: 1670233161}
   - component: {fileID: 1670233162}
   m_Layer: 0
   m_Name: Square
@@ -1076,19 +1079,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1670233161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1670233154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e7cac5632bd62c49ba59cd156528077, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gyro: {x: 0, y: 0, z: 0}
 --- !u!114 &1670233162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1101,13 +1091,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b2ae101fdd8444bad453c5b09fbd27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelSpeed: 0
+  accelSpeed: -3
   actualSpellID: 0
   spellsImage: []
-  spell1: {r: 1, g: 0, b: 0, a: 1}
-  spell2: {r: 1, g: 1, b: 1, a: 1}
-  spell3: {r: 0, g: 0, b: 0, a: 0}
-  spell4: {r: 0, g: 0, b: 0, a: 0}
+  accel: {x: 0, y: 0, z: 0}
 --- !u!1 &1704161181
 GameObject:
   m_ObjectHideFlags: 0

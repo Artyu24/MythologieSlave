@@ -15,10 +15,14 @@ public class Scepter : MonoBehaviour {
     public int actualSpellID;
     public List<Image> spellsImage;
 
-    public Color spell1;
-    public Color spell2;
-    public Color spell3;
-    public Color spell4;
+    public Vector3 accel;
+    public Vector3 gyro;
+
+    private List<int> gyroXDatas;
+    private List<int> gyroZDatas;
+
+    private float timer;
+    private bool hasFinishCheck = true;
 
     public static Scepter Instance { get; private set; }
 
@@ -36,35 +40,57 @@ public class Scepter : MonoBehaviour {
 
         if (joycons.Count > 0) {
 
-            Joycon joycon = joycons[0];
+            Joycon joycon = joycons[1];
 
-            if (joycon.GetAccel().x < 0 && joycon.GetAccel().x <= accelSpeed) {
-                Debug.Log("attack");
+            //   accel = new Vector3((int)joycon.GetAccel().x, (int)joycon.GetAccel().y, (int)joycon.GetAccel().z);
+            accel = joycon.GetAccel();
+            gyro = joycon.GetGyro();
+
+            if ((int)joycon.GetAccel().x < 0 && (int)joycon.GetAccel().x <= accelSpeed && hasFinishCheck) {
+                Debug.Log("attack 01");
+                hasFinishCheck = false;
+                StartCoroutine(WaitNextCheckData());
+            }
+
+            Debug.Log("gyroX: " + (int)joycon.GetGyro().x + " gyroZ: " + (int)joycon.GetGyro().z );
+
+
+            if(hasFinishCheck && gyroXDatas.Count > 0) {
+                int sumX = 0,sumZ = 0;
+
+                foreach(int xData in gyroXDatas) 
+                    sumX += xData;
+
+                int averageX = sumX / gyroXDatas.Count;
+
+                foreach (int zData in gyroZDatas)
+                    sumZ += zData;
+
+                int averageZ = sumZ / gyroZDatas.Count;
+
+                gyroXDatas.Clear();
+                gyroZDatas.Clear();
             }
         }
     }
 
-    public void OnScrollLeft(InputAction.CallbackContext e) {
-        if(e.started) {
-            Debug.Log("left");
+    private IEnumerator WaitNextCheckData() {
+        yield return null;
+
+        Joycon joycon = joycons[1];
+
+        gyroXDatas.Add((int)joycon.GetGyro().x);
+        gyroZDatas.Add((int)joycon.GetGyro().z);
+
+        timer += Time.deltaTime;
+
+        if (timer < 1f)
+            StartCoroutine(WaitNextCheckData());
+        else {
+            timer = 0;
+            hasFinishCheck = true;
         }
     }
 
-    public void OnScrollRight(InputAction.CallbackContext e)  {
-        if(e.started) {
-            Debug.Log("right");
-
-            actualSpellID++;
-
-            if (actualSpellID >= spellsImage.Count)
-                actualSpellID = spellsImage.Count - 1;
-
-            foreach (Image image in spellsImage)
-                image.gameObject.SetActive(false);
-
-            spellsImage[actualSpellID].gameObject.SetActive(true);
-
-
-        }
-    }
+   
 }
