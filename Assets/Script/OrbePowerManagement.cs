@@ -63,7 +63,7 @@ public class OrbePowerManagement : MonoBehaviour
             if(closestTotem != null ) {
                 totemsSpawn.Remove(closestTotem);
 
-                int totemIndex = Random.Range(0, totemsSpawn.Count - 1);
+                int totemIndex = Random.Range(0, totemsSpawn.Count);
 
                 GameObject totem = Instantiate(totemPrefab);
                 totem.transform.parent = totemsSpawn[totemIndex].transform;
@@ -81,6 +81,15 @@ public class OrbePowerManagement : MonoBehaviour
         }
         else {
 
+            GameObject totem = Instantiate(totemPrefab);
+            totem.transform.parent = totemsSpawn[0].transform;
+            totem.transform.localPosition = Vector3.zero;
+
+            GameObject orb = Instantiate(listOrbeFinal[possessOrb]);
+            orb.transform.parent = totem.transform;
+            orb.transform.localPosition = new Vector3(0, 3.2f, 0);
+
+            TotemTracker.Instance.StartTracker(totem);
         }
     }
 }
