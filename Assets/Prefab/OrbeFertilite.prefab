@@ -112,3 +112,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb1e01d228c9974d8ee2e1d35ab7b4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogue:
+    name: JeTEST
+    sentences:
+    - ouais alors vraielkhkzgefsdkjgsfgshjfgesh fejs gfeshjg feskhf esjg fseg fkjesgfgesf
+      sjfge s jhfg esgf ejsgfesgf jegsfj sejhgfeshjgf j
+  deusSprite: {fileID: 21300000, guid: a68fd091e962d1f47bc49d2d8bea14f5, type: 3}

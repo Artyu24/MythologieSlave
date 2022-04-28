@@ -19,6 +19,8 @@ TagManager:
   - Fire
   - Forge
   - AllyBullet
+  - DeusImage
+  - OrbSpawn
   layers:
   - Default
   - TransparentFX

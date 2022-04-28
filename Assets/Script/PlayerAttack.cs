@@ -85,31 +85,35 @@ public class PlayerAttack : MonoBehaviour {
     }
 
      void FixedUpdate() {
-        //SHOOT
-        if (!isActive)
-        {
-            axeDelay += Time.fixedDeltaTime;
-            bulletDelay += Time.fixedDeltaTime;
-        }
 
-        if (isAutoShooting && bulletDelay >= 0.25f)
-        {
-            bulletDelay = 0;
-            Bullet actualBullet = Instantiate(bullet, spawnBulletPoint.position, Quaternion.identity);
-            actualBullet.GetSpeed = bulletSpeed;
-            actualBullet.GetDamage = bulletDamage;
-        }
+         if (GameManager.gameState != GameManager.GameState.Paused)
+         {
+            //SHOOT
+            if (!isActive)
+            {
+                axeDelay += Time.fixedDeltaTime;
+                bulletDelay += Time.fixedDeltaTime;
+            }
 
-        if (isAxeShooting && axeDelay >= 1f && hasThunderSkill)
-        {
-            axeDelay = 0;
-            isActive = true;
-            AxeAttack axeObject = Instantiate(axe, spawnAxePoint.position, Quaternion.identity);
-            axeObject.Speed = axeSpeed;
-            axeObject.Damage = axeDamage;
-            axeObject.NbrEnemyStrikeMax = nbrEnemyStrike;
-        }
-    }
+            if (isAutoShooting && bulletDelay >= 0.25f)
+            {
+                bulletDelay = 0;
+                Bullet actualBullet = Instantiate(bullet, spawnBulletPoint.position, Quaternion.identity);
+                actualBullet.GetSpeed = bulletSpeed;
+                actualBullet.GetDamage = bulletDamage;
+            }
+
+            if (isAxeShooting && axeDelay >= 1f && hasThunderSkill)
+            {
+                axeDelay = 0;
+                isActive = true;
+                AxeAttack axeObject = Instantiate(axe, spawnAxePoint.position, Quaternion.identity);
+                axeObject.Speed = axeSpeed;
+                axeObject.Damage = axeDamage;
+                axeObject.NbrEnemyStrikeMax = nbrEnemyStrike;
+            }
+         }
+     }
 
     public void AutoShoot(InputAction.CallbackContext context)
     {

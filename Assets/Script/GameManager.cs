@@ -48,8 +48,6 @@ public class GameManager : MonoBehaviour
 
     public static TutorialState tutorialState;
     public static GameState gameState;
-    public static TutorialState GetTutorialState { get => tutorialState;}
-    public static GameState GetGameState { get => gameState; }
 
     private void Awake()
     {
@@ -108,13 +106,13 @@ public class GameManager : MonoBehaviour
 
             EnemySpawnManager.timeBtwEachSpawn = Mathf.Lerp(delayStartBtwEachEnemy, delayEndBtwEachEnemy, enemySpawnEvolution.Evaluate(timeInGame));
 
-            for(int i = 0; i < minutesPerEventList.Count;)
+            for (int i = 0; i < minutesPerEventList.Count; i++)
             {
                 if (timeInGame > minutesPerEventList[i] && minutesPerEventList[i] != 0)
                 {
                     minutesPerEventList[i] = 0;
                     //Appeler fonction de spawn de la boule de dieu dans les temples
-                    //OrbePowerManagement.Instance.SpawnTotem();
+                    OrbePowerManagement.Instance.SpawnOrbe();
                 }
             }
 
