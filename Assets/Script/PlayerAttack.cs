@@ -128,20 +128,19 @@ public class PlayerAttack : MonoBehaviour {
         hammerAttack += damage;
     }
 
-    public void OnSkillSpawn(InputAction.CallbackContext e) {
-        if(e.performed) {
+    public void OnSkillSpawn() {
 
-            if (!hasFertilitySkill)
-                return;
+        if (!hasFertilitySkill)
+            return;
 
-            Debug.Log("debug arduino");
+        Debug.Log("debug arduino");
 
-            UduinoManager.Instance.analogWrite(RED,/*(int) Scepter.Instance.spell2.r*/ 0);
-            UduinoManager.Instance.analogWrite(GREEN,255);
-            UduinoManager.Instance.analogWrite(BLUE, /*(int)Scepter.Instance.spell2.b*/ 0);
+        UduinoManager.Instance.analogWrite(RED,/*(int) Scepter.Instance.spell2.r*/ 0);
+        UduinoManager.Instance.analogWrite(GREEN,255);
+        UduinoManager.Instance.analogWrite(BLUE, /*(int)Scepter.Instance.spell2.b*/ 0);
 
-            SpawnAllies();
-        }
+        SpawnAllies();
+        
     }
 
     public void SpawnAllies() {
@@ -165,13 +164,13 @@ public class PlayerAttack : MonoBehaviour {
 
     #region "Hammer Skill"
 
-    public void OnSkillHammer(InputAction.CallbackContext e) {
-        if(e.performed) {
-            if (!hasHammerSkill)
-                return;
+    public void OnSkillHammer() {
 
-            SpawnHammer();
-        }
+        if (!hasHammerSkill)
+            return;
+
+        SpawnHammer();
+        
     }
 
     private IEnumerator WaitToSpawnHammer() {
