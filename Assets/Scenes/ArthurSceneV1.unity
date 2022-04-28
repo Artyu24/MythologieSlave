@@ -166,7 +166,7 @@ MonoBehaviour:
   totemTwo: {fileID: 149467077}
   totemThree: {fileID: 634869114}
   totemFour: {fileID: 559912192}
-  boss: {fileID: 7385001045381542489, guid: 3fa4396404508e2458891b69a354c8d3, type: 3}
+  boss: {fileID: 7385001045381542489, guid: d820dcb1671439341b16c3aca0f7dc5c, type: 3}
   spawnBossPoint: {fileID: 613785388}
 --- !u!4 &173139621
 Transform:
@@ -759,10 +759,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listDeusOrbe:
-  - {fileID: 5979104797442989149, guid: b2e6c583b8cfd3e458e2635b34ed46e9, type: 3}
-  - {fileID: 5979104797442989149, guid: b2e6c583b8cfd3e458e2635b34ed46e9, type: 3}
-  - {fileID: 5979104797442989149, guid: b2e6c583b8cfd3e458e2635b34ed46e9, type: 3}
-  - {fileID: 5979104797442989149, guid: b2e6c583b8cfd3e458e2635b34ed46e9, type: 3}
+  - {fileID: 6666928029704272177, guid: c451f5cb21f824747b22cb576f27ba64, type: 3}
+  - {fileID: 6666928029704272177, guid: c451f5cb21f824747b22cb576f27ba64, type: 3}
+  - {fileID: 6666928029704272177, guid: c451f5cb21f824747b22cb576f27ba64, type: 3}
+  - {fileID: 6666928029704272177, guid: c451f5cb21f824747b22cb576f27ba64, type: 3}
   totemsSpawn: []
   totemPrefab: {fileID: 0}
   possessOrb: 0
@@ -1338,7 +1338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee6c073f0127f744285a5e1daff0e11c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1191459452275201294, guid: 9725f9f0fe048be45b0ff3bf51c33da0, type: 3}
+  player: {fileID: 7264008346707161165, guid: 9725f9f0fe048be45b0ff3bf51c33da0, type: 3}
   playerTutorialSpawn: {fileID: 1210807568}
   playerGameSpawn: {fileID: 0}
   enemyTutorialAutoAttackSpawn:

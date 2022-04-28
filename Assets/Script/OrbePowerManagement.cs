@@ -39,8 +39,6 @@ public class OrbePowerManagement : MonoBehaviour
                 }
             }
         }
-
-        SpawnTotem();
     }
 
     public void SpawnTotem() {
@@ -63,7 +61,7 @@ public class OrbePowerManagement : MonoBehaviour
             if(closestTotem != null ) {
                 totemsSpawn.Remove(closestTotem);
 
-                int totemIndex = Random.Range(0, totemsSpawn.Count - 1);
+                int totemIndex = Random.Range(0, totemsSpawn.Count);
 
                 GameObject totem = Instantiate(totemPrefab);
                 totem.transform.parent = totemsSpawn[totemIndex].transform;
