@@ -13,11 +13,14 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        DontDestroyOnLoad(this.gameObject);
     }
 
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + movementInput * Time.fixedDeltaTime * speed);
+        if (movementInput != Vector2.zero && GameManager.GetGameState == GameManager.GameState.Tuto && GameManager.GetTutorialState == GameManager.TutorialState.Mouvement)
+            GameManager.UpdateTutorial();
     }
 
     public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
