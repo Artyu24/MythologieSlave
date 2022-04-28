@@ -100,6 +100,8 @@ public class DialogController : MonoBehaviour {
         finish = false;
         currentDialog.isFinish = true;
 
+        Debug.Log("stop dialog");
+
         TotemTracker.Instance.StopTracker();
 
     }

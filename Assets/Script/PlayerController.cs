@@ -27,20 +27,15 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
 
-    public void OnInteract(InputAction.CallbackContext e) {
-        if(e.performed && collideWithTotem && !DialogController.Instance.currentDialog.isFinish) {
-            // SPawn du dialogue 
-
-            Dialog dialog = DialogController.Instance.GetDialogByName("FireGod");
-            DialogController.Instance.currentDialog = dialog;
-            DialogController.Instance.isInDialog = true;
-            StartCoroutine(DialogController.Instance.ShowText(dialog.Content[0],dialog.Content[0].Length));
-        }
-    }
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if(collision.collider.tag == "Totem") {
             collideWithTotem = true;
+
+            Dialog dialog = DialogController.Instance.GetDialogByName(collision.collider.gameObject.transform.GetChild(0).gameObject.GetComponent<Orb>().dialogName);
+            DialogController.Instance.currentDialog = dialog;
+            DialogController.Instance.isInDialog = true;
+            StartCoroutine(DialogController.Instance.ShowText(dialog.Content[0], dialog.Content[0].Length));
         } 
     }
 

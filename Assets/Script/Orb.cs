@@ -13,6 +13,7 @@ public class Orb : MonoBehaviour
     }
 
     public OrbType orb;
+    public string dialogName;
 
     
     public void UnlockOrb() {

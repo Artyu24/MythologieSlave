@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5437853213977060157}
   - component: {fileID: 7334174637172068009}
   - component: {fileID: -8218713775148295191}
+  - component: {fileID: 8577633526979350926}
   m_Layer: 0
   m_Name: DeusOrbe
   m_TagString: Untagged
@@ -99,3 +100,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &8577633526979350926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5979104797442989149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb1e01d228c9974d8ee2e1d35ab7b4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orb: 0
+  dialogName: FireGod
