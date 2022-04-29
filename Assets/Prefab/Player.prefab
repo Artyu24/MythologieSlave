@@ -1343,21 +1343,9 @@ MonoBehaviour:
     m_ActionId: df60a8ff-4cf2-4418-97ef-77201e6fdc44
     m_ActionName: Gameplay/New action
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -482265953369063851}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: TogglePause
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: c92f28e6-0216-4f64-9ca7-59f16827039c
-    m_ActionName: Gameplay/Pause[/XInputControllerWindows/start]
+      m_Calls: []
+    m_ActionId: d8561d4a-609a-4ad4-a81f-9af3a4bb9e87
+    m_ActionName: Gameplay/SkillMenu[/XInputControllerWindows/buttonEast]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -1450,6 +1438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   collideWithTotem: 0
+  animator: {fileID: -6810097734828124776}
 --- !u!114 &7264008346707161154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1475,8 +1464,8 @@ MonoBehaviour:
   nbrEnemyStrike: 20
   hasFertilitySkill: 0
   allyPrefab: {fileID: 3035193102477843049, guid: 11bae37fc7db93a4c94bf56bf1933951, type: 3}
-  cooldownTwo: 0
-  isInCooldownTwo: 0
+  cooldownFertility: 0
+  startCooldownFertility: 0
   maxSpawnAllies: 1
   spawnAlliesDelay: 0
   spawnAlliesRange: 0
@@ -1487,10 +1476,14 @@ MonoBehaviour:
   hammerSpeed: {x: 0, y: 0}
   radiusArea: 0
   hammerAttack: 0
+  cooldownHammer: 0
+  startCooldownHammer: 0
   hasRaySkill: 0
   rayDistance: 0
   damageRay: 0
   rayPrefab: {fileID: 3165213853828787042, guid: 7a096dd4fb6e8d042b602bb5bd671b95, type: 3}
+  cooldownRay: 0
+  startCooldownRay: 0
 --- !u!114 &5328643245479521107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1526,6 +1519,8 @@ MonoBehaviour:
   gyro: {x: 0, y: 0, z: 0}
   _mesureTime: 0.15
   _magnitudeThreshold: 2
+  weel: {fileID: 0}
+  orbs: []
 --- !u!95 &-6810097734828124776
 Animator:
   serializedVersion: 3
@@ -1536,7 +1531,7 @@ Animator:
   m_GameObject: {fileID: 7264008346707161165}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b5e8b373f0ba5994cb8538b09378f5f8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
