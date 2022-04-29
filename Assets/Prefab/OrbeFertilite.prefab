@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7334174637172068009}
   - component: {fileID: -8218713775148295191}
   - component: {fileID: 8577633526979350926}
+  - component: {fileID: 3043779173348185222}
   m_Layer: 0
   m_Name: OrbeFertilite
   m_TagString: Fertilite
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: a29d5e0836f1a004bbb7349b27cc7af3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 97645c4b3bd0efc48ac7b7d060a708be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,3 +121,77 @@ MonoBehaviour:
       ! Tiens voici mon pouvoir, fais en bon usage."
   deusSprite: {fileID: 21300000, guid: a03a374633dee2142957a403c8c8040d, type: 3}
   tutorialSprite: {fileID: 21300000, guid: 1f4848a56ecee3a42a8c12aeb5f737dd, type: 3}
+--- !u!114 &3043779173348185222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5979104797442989149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 5f6bae02b747174479680d03e90fc423, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7e7befae-bd00-4714-99a7-df90edb58ccb
+    m_ActionName: Gameplay/Move[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e7e46764-3c5f-4f07-b802-6b99eb4f041f
+    m_ActionName: Gameplay/ScrollLeft[/Keyboard/z]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a334e59c-3700-4357-ab21-11429b7cf91f
+    m_ActionName: Gameplay/ScrollRight[/Keyboard/x]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3c47896d-399f-4a04-993b-1e67e2a8133b
+    m_ActionName: Gameplay/Attack
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3fac9785-9638-4aea-bb99-1be3cfba6eb2
+    m_ActionName: Gameplay/Axe[/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b153bce4-9fd4-446b-bafc-c5190fb7a1ec
+    m_ActionName: Gameplay/CompetenceOne[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8577633526979350926}
+        m_TargetAssemblyTypeName: Orb, Assembly-CSharp
+        m_MethodName: SkipDialogue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: df60a8ff-4cf2-4418-97ef-77201e6fdc44
+    m_ActionName: Gameplay/AutoAttack[/XInputControllerWindows/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c92f28e6-0216-4f64-9ca7-59f16827039c
+    m_ActionName: Gameplay/Pause[/XInputControllerWindows/start]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Gameplay
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}

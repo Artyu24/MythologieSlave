@@ -7,6 +7,7 @@ public class DialogueManager : MonoBehaviour
 {
     public Text nameText;
     public Text dialogueText;
+    public GameObject canSkip;
 
     public Animator animator;
 
@@ -53,6 +54,7 @@ public class DialogueManager : MonoBehaviour
         string sentence = sentences.Dequeue();
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
+        StartCoroutine(CanSkipText());
     }
 
     /// <summary>
@@ -76,4 +78,12 @@ public class DialogueManager : MonoBehaviour
         animator.SetBool("isOpen", false);
     }
 
+    private IEnumerator CanSkipText()
+    {
+        Debug.Log("alo");
+        canSkip.SetActive(false);
+        yield return new WaitForSeconds(5);
+        Debug.Log("aluile");
+        canSkip.SetActive(true);
+    }
 }

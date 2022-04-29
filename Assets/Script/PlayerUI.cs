@@ -42,7 +42,7 @@ public class PlayerUI : MonoBehaviour
 
     private IEnumerator AffichageUITutorial(Sprite sprite)
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         img.color = new Color(255, 255, 255, 255);
         img.sprite = sprite;
         yield return new WaitForSeconds(3f);

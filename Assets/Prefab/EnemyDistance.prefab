@@ -390,7 +390,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.54, y: 8.58}
+    oldSize: {x: 1.816, y: 3.432}
     newSize: {x: 1, y: 0.8828125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -434,11 +434,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDistanceAttack: 1
   enemyBullet: {fileID: 4468112687433545785, guid: 7ace0fde6fd22a84bb174d0f37e3c49d, type: 3}
-  timeBtwAttack: 3
+  timeBtwAttack: 2
   distancePlayer: 5
-  movSpeed: 4
+  movSpeed: 3
   bulletSpeed: 2
-  damage: 5
+  damage: 10
 --- !u!114 &7385001045381542483
 MonoBehaviour:
   m_ObjectHideFlags: 0
