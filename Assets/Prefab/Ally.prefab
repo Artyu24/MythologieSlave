@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3035193102477843028}
   - component: {fileID: 3035193102477843051}
   - component: {fileID: 3035193102477843050}
-  - component: {fileID: 4316687795553165854}
+  - component: {fileID: -6892518650249112693}
   m_Layer: 0
   m_Name: Ally
   m_TagString: Untagged
@@ -140,7 +140,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4316687795553165854
+--- !u!114 &-6892518650249112693
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -149,10 +149,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3035193102477843049}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63a206dd768d5f44ea0162d661d19916, type: 3}
+  m_Script: {fileID: 11500000, guid: 1cb81ca415757734a8f9b2f1356fc5ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 0}
-  Low: {r: 0, g: 0, b: 0, a: 0}
-  High: {r: 0, g: 0, b: 0, a: 0}
-  offset: {x: 0, y: 0, z: 0}
+  maxTimer: 10

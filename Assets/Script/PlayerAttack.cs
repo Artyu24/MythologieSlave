@@ -34,10 +34,12 @@ public class PlayerAttack : MonoBehaviour {
     [Header("Competence 2")]
     public bool hasFertilitySkill;
     public GameObject allyPrefab;
-    public int cooldownTwo;
-    private float timerTwo;
+
+    public int cooldownFertility;
+    private float timerFertility;
+    public bool startCooldownFertility;
+
     [HideInInspector]
-    public bool isInCooldownTwo;
     private int spawnAllies;
     public int maxSpawnAllies = 1;
     public float spawnAlliesDelay;
@@ -56,12 +58,21 @@ public class PlayerAttack : MonoBehaviour {
     public float radiusArea;
     public int hammerAttack;
 
+    public int cooldownHammer;
+    private float timerHammer;
+    public bool startCooldownHammer;
+
 
     [Header("Competence 4")]
     public bool hasRaySkill;
     public float rayDistance;
     public int damageRay;
     public GameObject rayPrefab;
+
+    public int cooldownRay;
+    private float timerRay;
+    public bool startCooldownRay;
+
 
     public static PlayerAttack Instance { get; set; }
 
@@ -77,10 +88,38 @@ public class PlayerAttack : MonoBehaviour {
         UduinoManager.Instance.pinMode(6, PinMode.Output);
         UduinoManager.Instance.pinMode(5, PinMode.Output);
     }
-    void Start() {}
+
 
     void Update() {
         Debug.DrawLine(transform.position,transform.position + transform.right * 100,Color.red);
+
+        if(startCooldownFertility) {
+            timerFertility += Time.deltaTime;
+
+            if(timerFertility >= cooldownFertility) {
+                timerFertility = 0;
+                startCooldownFertility = false;
+            }
+        }
+
+        if (startCooldownHammer) {
+            timerHammer += Time.deltaTime;
+
+            if (timerHammer >= cooldownHammer) {
+                timerHammer = 0;
+                startCooldownHammer = false;
+            }
+        }
+
+        if (startCooldownRay) {
+            timerRay += Time.deltaTime;
+
+            if (timerRay >= cooldownRay) {
+                timerRay = 0;
+                startCooldownRay = false;
+            }
+        }
+
 
     }
 
@@ -144,7 +183,7 @@ public class PlayerAttack : MonoBehaviour {
 
     public void OnSkillSpawn() {
 
-        if (!hasFertilitySkill)
+        if (!hasFertilitySkill && !startCooldownFertility)
             return;
 
         Debug.Log("debug arduino");
@@ -152,6 +191,8 @@ public class PlayerAttack : MonoBehaviour {
         UduinoManager.Instance.analogWrite(RED,/*(int) Scepter.Instance.spell2.r*/ 0);
         UduinoManager.Instance.analogWrite(GREEN,255);
         UduinoManager.Instance.analogWrite(BLUE, /*(int)Scepter.Instance.spell2.b*/ 0);
+        
+        startCooldownFertility = true;
 
         SpawnAllies();
         
@@ -174,7 +215,8 @@ public class PlayerAttack : MonoBehaviour {
         spawnAllies++;
 
         if (spawnAllies < maxSpawnAllies)
-            SpawnAllies();
+            SpawnAllies();     
+
     }
 
 
@@ -182,7 +224,7 @@ public class PlayerAttack : MonoBehaviour {
 
     public void OnSkillHammer() {
 
-        if (!hasHammerSkill)
+        if (!hasHammerSkill && !startCooldownHammer)
             return;
 
         SpawnHammer();
@@ -227,10 +269,14 @@ public class PlayerAttack : MonoBehaviour {
 
 
     public void OnLaserSkill() {
-        if (!hasRaySkill)
+        if (!hasRaySkill && !startCooldownRay)
             return;
+
         PlayerUI.Instance.ResetAffichage();
-        Instantiate(rayPrefab, transform.position,Quaternion.identity);
+        GameObject ray = Instantiate(rayPrefab, transform.position,Quaternion.identity);
+
+        ray.transform.parent = transform;
+
     }
 
     #endregion
