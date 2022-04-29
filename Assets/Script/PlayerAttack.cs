@@ -148,8 +148,6 @@ public class PlayerAttack : MonoBehaviour {
             axeDelay = 0;
             isActive = true;
 
-            if (transform.gameObject.TryGetComponent<PlayerController>(out PlayerController controller))
-                controller.animator.SetBool("IsAttacking", true);
 
             AxeAttack axeObject = Instantiate(axe, spawnAxePoint.position, Quaternion.identity);
             axeObject.Speed = axeSpeed;
@@ -193,8 +191,6 @@ public class PlayerAttack : MonoBehaviour {
 
         startCooldownFertility = true;
 
-        if (transform.gameObject.TryGetComponent<PlayerController>(out PlayerController controller))
-            controller.animator.SetBool("IsAttacking", true);
 
         SpawnAllies();
         
@@ -228,8 +224,6 @@ public class PlayerAttack : MonoBehaviour {
             return;
 
 
-        if (transform.gameObject.TryGetComponent<PlayerController>(out PlayerController controller))
-            controller.animator.SetBool("IsAttacking", true);
 
         SpawnHammer();
         

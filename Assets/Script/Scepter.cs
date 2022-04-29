@@ -98,13 +98,6 @@ public class Scepter : MonoBehaviour {
 
     public void OnSkillMenu(InputAction.CallbackContext e) {
         if (e.started) {
-            hasOpenSkillMenu = !hasOpenSkillMenu;
-            Debug.Log("enter menu");
-        }
-    }
-
-    public void OnSkillMenuRight(InputAction.CallbackContext e) {
-        if (e.started && hasOpenSkillMenu) {
             actualSkillId++;
             Debug.Log("right");
             if (actualSkillId >= 4)
@@ -113,6 +106,7 @@ public class Scepter : MonoBehaviour {
             weel.sprite = orbs[actualSkillId];
         }
     }
+
 
     private void Attack(int id) {
         switch(id) {
