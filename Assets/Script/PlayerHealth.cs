@@ -9,8 +9,11 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private Slider shieldSlider;
     public Color Low, High;
 
-    private int life, shield, maxLife = 1000, maxShield = 200;
+    public int life, shield, maxLife = 1000, maxShield = 200;
     public float GetLife { get => life; }
+
+    [SerializeField] private GameObject deathMenu;
+    [SerializeField] private GameObject victoryMenu;
 
     private void Awake()
     {
@@ -45,7 +48,8 @@ public class PlayerHealth : MonoBehaviour
             life -= damage;
             if (life <= 0)
             {
-                Destroy(gameObject);
+                deathMenu.SetActive(true);
+                gameObject.GetComponent<SpriteRenderer>().enabled = false;
             }
         }
         SetHealth();
@@ -86,5 +90,10 @@ public class PlayerHealth : MonoBehaviour
         shieldSlider.gameObject.SetActive(shield > 0);
         shieldSlider.maxValue = maxShield;
         shieldSlider.value = shield;
+    }
+
+    public void VICTORY()
+    {
+        
     }
 }

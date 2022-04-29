@@ -508,7 +508,7 @@ GameObject:
   - component: {fileID: 7385001045381542484}
   - component: {fileID: 7385001045381542487}
   - component: {fileID: -7099225481634018695}
-  - component: {fileID: 4045332243678886935}
+  - component: {fileID: 295618799927998513}
   m_Layer: 0
   m_Name: BabaYaga
   m_TagString: Enemy
@@ -660,7 +660,7 @@ MonoBehaviour:
   - {fileID: 6409334267593500893}
   enemyMelee: {fileID: 7385001045381542489, guid: 3fa4396404508e2458891b69a354c8d3, type: 3}
   enemyDistance: {fileID: 7385001045381542489, guid: e8d98c719a5f24046b8fa032e19380a8, type: 3}
---- !u!114 &4045332243678886935
+--- !u!114 &295618799927998513
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -669,12 +669,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7385001045381542489}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63a206dd768d5f44ea0162d661d19916, type: 3}
+  m_Script: {fileID: 11500000, guid: 706fd5101f759304391ec46653a8103c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1205647005740438652}
   Low: {r: 1, g: 0, b: 0, a: 1}
-  High: {r: 0.1551745, g: 1, b: 0, a: 1}
+  High: {r: 0.36378717, g: 1, b: 0, a: 1}
   offset: {x: 0, y: -2.5, z: 0}
   life: 0
   maxLife: 3000
