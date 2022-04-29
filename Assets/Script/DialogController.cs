@@ -103,7 +103,7 @@ public class DialogController : MonoBehaviour {
         Debug.Log("stop dialog");
 
         TotemTracker.Instance.StopTracker();
-        FindObjectOfType<Orb>().UnlockOrb();
+        //FindObjectOfType<Orb>().UnlockOrb();
     }
 
     public Dialog GetDialogByName(string name) {

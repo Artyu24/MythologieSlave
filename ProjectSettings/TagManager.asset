@@ -14,7 +14,15 @@ TagManager:
   - GoldChest
   - PlayerShieldBar
   - Totem
+  - Fertilite
+  - Thunder
+  - Fire
+  - Forge
   - AllyBullet
+  - DeusImage
+  - OrbSpawn
+  - Barriere
+  - WEEL
   layers:
   - Default
   - TransparentFX

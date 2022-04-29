@@ -14,11 +14,15 @@ public class EnemyHealth : MonoBehaviour
     public float GetLife { get => life;}
     public float GetPotentialLife { get => potentialLife; }
 
+    private bool isWellSpawn;
+
     private void Awake()
     {
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0);
         life = maxLife;
         potentialLife = maxLife;
         SetHealth();
+        StartCoroutine(IsWellSpawn());
     }
 
     private void Update()
@@ -52,6 +56,16 @@ public class EnemyHealth : MonoBehaviour
     public void TakePotentialDamage(int potentialDamage)
     {
         potentialLife -= potentialDamage;
+        if (potentialLife <= 0)
+        {
+            StartCoroutine(ResetPotentialLife());
+        }
+    }
+
+    private IEnumerator ResetPotentialLife()
+    {
+        yield return new WaitForSeconds(1.3f);
+        potentialLife = life;
     }
 
     private void SetHealth()
@@ -79,4 +93,18 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
+    private void OnCollisionStay2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Barriere") && !isWellSpawn)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public IEnumerator IsWellSpawn()
+    {
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
+        isWellSpawn = true;
+    }
 }

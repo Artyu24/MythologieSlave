@@ -10,8 +10,8 @@ public class PlayerAttack : MonoBehaviour {
     [SerializeField] private Bullet bullet;
     [SerializeField] private Transform spawnBulletPoint;
     private float bulletDelay;
-    private float bulletSpeed = 5;
-    private int bulletDamage = 50;
+    private float bulletSpeed = 10;
+    private int bulletDamage = 30;
 
 
     [Header("Competence 1")]
@@ -128,33 +128,36 @@ public class PlayerAttack : MonoBehaviour {
     }
 
      void FixedUpdate() {
-        //SHOOT
-        if (!isActive)
-        {
-            axeDelay += Time.fixedDeltaTime;
-            bulletDelay += Time.fixedDeltaTime;
-        }
 
-        if (isAutoShooting && bulletDelay >= 0.25f)
-        {
-            bulletDelay = 0;
-            Bullet actualBullet = Instantiate(bullet, spawnBulletPoint.position, Quaternion.identity);
-            actualBullet.GetSpeed = bulletSpeed;
-            actualBullet.GetDamage = bulletDamage;
-        }
+         if (GameManager.gameState != GameManager.GameState.Paused)
+         {
+            //SHOOT
+            if (!isActive)
+            {
+                axeDelay += Time.fixedDeltaTime;
+                bulletDelay += Time.fixedDeltaTime;
+            }
 
-        if (isAxeShooting && axeDelay >= 1f && hasThunderSkill)
-        {
-            axeDelay = 0;
-            isActive = true;
+            if (isAutoShooting && bulletDelay >= 0.25f)
+            {
+                bulletDelay = 0;
+                Bullet actualBullet = Instantiate(bullet, spawnBulletPoint.position, Quaternion.identity);
+                actualBullet.GetSpeed = bulletSpeed;
+                actualBullet.GetDamage = bulletDamage;
+            }
 
+            if (isAxeShooting && axeDelay >= 1f && hasThunderSkill)
+            {
+                axeDelay = 0;
+                isActive = true;
 
-            AxeAttack axeObject = Instantiate(axe, spawnAxePoint.position, Quaternion.identity);
-            axeObject.Speed = axeSpeed;
-            axeObject.Damage = axeDamage;
-            axeObject.NbrEnemyStrikeMax = nbrEnemyStrike;
-        }
-    }
+                AxeAttack axeObject = Instantiate(axe, spawnAxePoint.position, Quaternion.identity);
+                axeObject.Speed = axeSpeed;
+                axeObject.Damage = axeDamage;
+                axeObject.NbrEnemyStrikeMax = nbrEnemyStrike;
+            }
+         }
+     }
 
     public void AutoShoot(InputAction.CallbackContext context)
     {
@@ -198,6 +201,8 @@ public class PlayerAttack : MonoBehaviour {
 
     public void SpawnAllies() {
         
+        PlayerUI.Instance.ResetAffichage();
+
         GameObject ally = Instantiate(allyPrefab, transform.GetChild(0).position, Quaternion.identity);
 
         ally.transform.parent = transform;
@@ -253,6 +258,8 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     private void SpawnHammer() {
+        PlayerUI.Instance.ResetAffichage();
+
         GameObject hammer = Instantiate(hammerPrefab,transform.position,Quaternion.Euler(0,0,-180));
 
         hammerSpeed.x = Random.Range(1, radiusArea);
@@ -271,12 +278,13 @@ public class PlayerAttack : MonoBehaviour {
         if (!hasRaySkill && !startCooldownRay)
             return;
 
+        PlayerUI.Instance.ResetAffichage();
       //  if (transform.gameObject.TryGetComponent<PlayerController>(out PlayerController controller))
         //    controller.animator.SetBool("IsAttacking", true);
-
         GameObject ray = Instantiate(rayPrefab, transform.position,Quaternion.identity);
 
         ray.transform.parent = transform;
+
     }
 
     #endregion

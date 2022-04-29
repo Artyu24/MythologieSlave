@@ -22,9 +22,12 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movementInput * Time.fixedDeltaTime * speed);
-        if (movementInput != Vector2.zero && GameManager.GetGameState == GameManager.GameState.Tuto && GameManager.GetTutorialState == GameManager.TutorialState.Mouvement)
-            GameManager.UpdateTutorial();
+        if (GameManager.gameState != GameManager.GameState.Paused)
+        {
+            rb.MovePosition(rb.position + movementInput * Time.fixedDeltaTime * speed);
+            if (movementInput != Vector2.zero && GameManager.gameState == GameManager.GameState.Tuto && GameManager.tutorialState == GameManager.TutorialState.Mouvement)
+                GameManager.UpdateTutorial();
+        }
 
         float speedAnim = 0f;
 
@@ -40,21 +43,4 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();
 
-
-    private void OnCollisionEnter2D(Collision2D collision) {
-        if(collision.collider.tag == "Totem") {
-            collideWithTotem = true;
-
-            Dialog dialog = DialogController.Instance.GetDialogByName(collision.collider.gameObject.transform.GetChild(0).gameObject.GetComponent<Orb>().dialogName);
-            DialogController.Instance.currentDialog = dialog;
-            DialogController.Instance.isInDialog = true;
-            StartCoroutine(DialogController.Instance.ShowText(dialog.Content[0], dialog.Content[0].Length));
-        } 
-    }
-
-    private void OnCollisionExit2D(Collision2D collision) {
-        if(collision.collider.tag == "Totem") {
-            collideWithTotem = false;
-        }
-    }
 }

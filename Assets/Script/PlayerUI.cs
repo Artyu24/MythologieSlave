@@ -10,6 +10,12 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private Text text;
     [SerializeField] private Vector3 offset;
 
+    public static PlayerUI Instance { get; private set; }
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Update()
     {
         img.transform.position = Camera.main.WorldToScreenPoint(player.position + offset);
@@ -25,6 +31,26 @@ public class PlayerUI : MonoBehaviour
         img.color = new Color(255, 255, 255, 255);
         text.color = new Color(255, 255, 255, 255);
         yield return new WaitForSeconds(1f);
+        img.color = new Color(255, 255, 255, 0);
+        text.color = new Color(255, 255, 255, 0);
+    }
+
+    public void StartAffichageUITutorial(Sprite sprite)
+    {
+        StartCoroutine(AffichageUITutorial(sprite));
+    }
+
+    private IEnumerator AffichageUITutorial(Sprite sprite)
+    {
+        yield return new WaitForSeconds(5f);
+        img.color = new Color(255, 255, 255, 255);
+        img.sprite = sprite;
+        yield return new WaitForSeconds(3f);
+        img.color = new Color(255, 255, 255, 0);
+    }
+
+    public void ResetAffichage()
+    {
         img.color = new Color(255, 255, 255, 0);
         text.color = new Color(255, 255, 255, 0);
     }
