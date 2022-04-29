@@ -69,9 +69,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Pause",
+                    "name": "SkillMenu",
                     "type": "Button",
-                    "id": "c92f28e6-0216-4f64-9ca7-59f16827039c",
+                    "id": "d8561d4a-609a-4ad4-a81f-9af3a4bb9e87",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -148,7 +148,7 @@
                 {
                     "name": "",
                     "id": "7244b1dd-48c7-4e9b-80f7-716106788c3e",
-                    "path": "<Keyboard>/z",
+                    "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -159,7 +159,7 @@
                 {
                     "name": "",
                     "id": "2ee1868b-314d-4a80-877c-bf451dffb78a",
-                    "path": "<Keyboard>/x",
+                    "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -202,12 +202,12 @@
                 },
                 {
                     "name": "",
-                    "id": "0e8dec95-46c9-43be-a5c9-1f4e5ce739ba",
-                    "path": "<Gamepad>/start",
+                    "id": "70fbfc0b-8447-4a84-bb49-9bbab2977a23",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Pause",
+                    "action": "SkillMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
