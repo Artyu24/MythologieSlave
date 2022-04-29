@@ -33,12 +33,11 @@ public class Scepter : MonoBehaviour {
     public static Scepter Instance { get; private set; }
 
 
-    private bool hasOpenSkillMenu;
     private int actualSkillId = 1;
 
     public Image weel;
 
-    public Sprite[] orbs;
+    public List<Sprite> orbs = new List<Sprite>();
 
 
     private void Awake() {
@@ -47,11 +46,13 @@ public class Scepter : MonoBehaviour {
 
     void Start() {
         joycons = JoyconManager.Instance.j;
+
+        
     }
 
     void Update() {
 
-        if (joycons.Count > 0) {
+        if (joycons != null && joycons.Count > 0) {
 
             Joycon joycon = joycons[0];
 
@@ -97,13 +98,16 @@ public class Scepter : MonoBehaviour {
     }
 
     public void OnSkillMenu(InputAction.CallbackContext e) {
-        if (e.started) {
+        if (e.started && orbs.Count > 0) {
+
             actualSkillId++;
             Debug.Log("right");
-            if (actualSkillId >= 4)
+            if (actualSkillId >= orbs.Count)
                 actualSkillId = 0;
 
             weel = GameObject.FindGameObjectWithTag("WEEL").GetComponent<Image>();
+            weel.gameObject.SetActive(true);
+            weel.enabled = true;
             weel.sprite = orbs[actualSkillId];
         }
     }

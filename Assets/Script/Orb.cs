@@ -78,6 +78,8 @@ public class Orb : MonoBehaviour
             else if (gameObject.CompareTag("Forge"))
                 PlayerAttack.Instance.hasHammerSkill = true;
 
+            Scepter.Instance.orbs.Add(transform.gameObject.GetComponent<SpriteRenderer>().sprite);
+
             PlayerUI.Instance.StartAffichageUITutorial(tutorialSprite);
 
             StartCoroutine(StopDialogue());
