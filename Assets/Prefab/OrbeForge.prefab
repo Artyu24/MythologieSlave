@@ -121,7 +121,7 @@ MonoBehaviour:
       je t\u2019offre la puissance de mes marteaux, ils t'aideront  \xE0 vaincre
       tout sur ton passage tu verras."
   deusSprite: {fileID: 21300000, guid: ed932f0525c55f742a0ae8c1d15cf2d0, type: 3}
-  tutorialSprite: {fileID: 21300000, guid: 1f4848a56ecee3a42a8c12aeb5f737dd, type: 3}
+  tutorialSprite: {fileID: 21300000, guid: 7cb23ba45b8b9e1419ae074bd495af64, type: 3}
 --- !u!114 &58782441954733857
 MonoBehaviour:
   m_ObjectHideFlags: 0

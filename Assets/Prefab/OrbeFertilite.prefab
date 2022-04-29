@@ -120,7 +120,7 @@ MonoBehaviour:
       venant d'une jeune magicienne je me dois de lui donner ma b\xE9n\xE9diction
       ! Tiens voici mon pouvoir, fais en bon usage."
   deusSprite: {fileID: 21300000, guid: a03a374633dee2142957a403c8c8040d, type: 3}
-  tutorialSprite: {fileID: 21300000, guid: 1f4848a56ecee3a42a8c12aeb5f737dd, type: 3}
+  tutorialSprite: {fileID: 21300000, guid: 7cb23ba45b8b9e1419ae074bd495af64, type: 3}
 --- !u!114 &3043779173348185222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,8 +188,8 @@ MonoBehaviour:
     m_ActionName: Gameplay/AutoAttack[/XInputControllerWindows/rightTrigger]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: c92f28e6-0216-4f64-9ca7-59f16827039c
-    m_ActionName: Gameplay/Pause[/XInputControllerWindows/start]
+    m_ActionId: d8561d4a-609a-4ad4-a81f-9af3a4bb9e87
+    m_ActionName: Gameplay/SkillMenu[/XInputControllerWindows/buttonEast]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay

@@ -78,7 +78,8 @@ public class OrbePowerManagement : MonoBehaviour
                 isDone = true;
                 Instantiate(listOrbeFinal[actualOrb], totemsSpawnPointTab[i].transform.position, Quaternion.identity);
                 actualOrb++;
-                //TotemTracker.Instance.StartTracker(totemsSpawnPointTab[i]);
+                Debug.Log("CA SPAWN");
+                Viseur.Instance.OrbPos(totemsSpawnPointTab[i].transform.position);
             }
         }
 

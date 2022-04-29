@@ -121,7 +121,7 @@ MonoBehaviour:
       te donne ma hache, prend en bien soins elle m\u2019a servi pour vaincre de
       nombreux ennemis. Puisse-t-elle t\u2019aider dans ta qu\xEAte..."
   deusSprite: {fileID: 21300000, guid: e1968e6693e6f1c499e0b4118677b1a1, type: 3}
-  tutorialSprite: {fileID: 21300000, guid: 1f4848a56ecee3a42a8c12aeb5f737dd, type: 3}
+  tutorialSprite: {fileID: 21300000, guid: 7cb23ba45b8b9e1419ae074bd495af64, type: 3}
 --- !u!114 &5501789545196797477
 MonoBehaviour:
   m_ObjectHideFlags: 0

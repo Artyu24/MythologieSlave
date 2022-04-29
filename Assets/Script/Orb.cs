@@ -28,15 +28,13 @@ public class Orb : MonoBehaviour
             FindObjectOfType<DialogueManager>().EndDialogue();
             if (GameManager.gameState == GameManager.GameState.Tuto && GameManager.tutorialState == GameManager.TutorialState.Interaction)
             {
-                Debug.Log("Update Tuto");
                 GameManager.UpdateTutorial();
                 OrbePowerManagement.actualOrb++;
             }
             else if (GameManager.gameState != GameManager.GameState.Tuto)
             {
-                Debug.Log("On est en jeu");
                 GameManager.gameState = GameManager.GameState.InGame;
-                //TotemTracker.Instance.StopTracker();
+                Viseur.Instance.ResetViseur();
             }
 
             foreach (GameObject enemy in enemyTab)
@@ -79,7 +77,7 @@ public class Orb : MonoBehaviour
                 PlayerAttack.Instance.hasHammerSkill = true;
 
             Scepter.Instance.orbs.Add(transform.gameObject.GetComponent<SpriteRenderer>().sprite);
-
+            Scepter.Instance.DisplayUISkill();
             PlayerUI.Instance.StartAffichageUITutorial(tutorialSprite);
 
             StartCoroutine(StopDialogue());

@@ -1512,7 +1512,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7264008345875701149}
   m_Layer: 0
-  m_Name: Viseur
+  m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1552,6 +1552,7 @@ GameObject:
   - component: {fileID: 8882090909920018251}
   - component: {fileID: -6810097734828124776}
   - component: {fileID: -482265953369063851}
+  - component: {fileID: 6913105921115412378}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1750,6 +1751,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: d8561d4a-609a-4ad4-a81f-9af3a4bb9e87
     m_ActionName: Gameplay/SkillMenu[/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -482265953369063851}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: TogglePause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c005920c-0492-4bff-9573-16c9156d27e8
+    m_ActionName: Gameplay/Pause[/XInputControllerWindows/dpad/down,/XInputControllerWindows1/dpad/down]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -1963,6 +1980,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 925813431158350177}
+--- !u!114 &6913105921115412378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7264008346707161165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780ddebe228afaf499a1f73b7454d854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viseur: {fileID: 0}
+  orbePosition: {x: 0, y: 0, z: 0}
 --- !u!1 &7851679157090545920
 GameObject:
   m_ObjectHideFlags: 0
@@ -2089,8 +2120,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -0.000013351, y: 25.8}
+  m_SizeDelta: {x: 147.4259, y: 150.2573}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7090168687610691215
 CanvasRenderer:
@@ -2120,9 +2151,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 7cb23ba45b8b9e1419ae074bd495af64, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1

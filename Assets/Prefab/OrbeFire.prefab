@@ -122,7 +122,7 @@ MonoBehaviour:
       m\u2019en fais pas, tiens voici ma b\xE9n\xE9diction et qu\u2019elle guide
       tes pas vers le soleil"
   deusSprite: {fileID: 21300000, guid: 78007be90e3c1754fa3e2b1c72a95186, type: 3}
-  tutorialSprite: {fileID: 21300000, guid: 1f4848a56ecee3a42a8c12aeb5f737dd, type: 3}
+  tutorialSprite: {fileID: 21300000, guid: 7cb23ba45b8b9e1419ae074bd495af64, type: 3}
 --- !u!114 &7618260152837017046
 MonoBehaviour:
   m_ObjectHideFlags: 0

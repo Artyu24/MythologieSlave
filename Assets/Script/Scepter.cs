@@ -69,6 +69,7 @@ public class Scepter : MonoBehaviour {
                     }
 
                     timer = 0;
+                    accel = joycon.GetAccel();
                     float averageX = gyroSave.Select(i => i.x).Average();
                     float averageY = gyroSave.Select(i => i.y).Average();
                     float averageZ = gyroSave.Select(i => i.z+1).Average();
@@ -99,19 +100,22 @@ public class Scepter : MonoBehaviour {
 
     public void OnSkillMenu(InputAction.CallbackContext e) {
         if (e.started && orbs.Count > 0) {
-
-            actualSkillId++;
-            Debug.Log("right");
-            if (actualSkillId >= orbs.Count)
-                actualSkillId = 0;
-
-            weel = GameObject.FindGameObjectWithTag("WEEL").GetComponent<Image>();
-            weel.gameObject.SetActive(true);
-            weel.enabled = true;
-            weel.sprite = orbs[actualSkillId];
+            DisplayUISkill();
         }
     }
 
+    public void DisplayUISkill()
+    {
+        actualSkillId++;
+        Debug.Log("right");
+        if (actualSkillId >= orbs.Count)
+            actualSkillId = 0;
+
+        weel = GameObject.FindGameObjectWithTag("WEEL").GetComponent<Image>();
+        weel.gameObject.SetActive(true);
+        weel.enabled = true;
+        weel.sprite = orbs[actualSkillId];
+    }
 
     private void Attack(int id) {
         switch(id) {

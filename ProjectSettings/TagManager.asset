@@ -23,6 +23,7 @@ TagManager:
   - OrbSpawn
   - Barriere
   - WEEL
+  - Viseur
   layers:
   - Default
   - TransparentFX
