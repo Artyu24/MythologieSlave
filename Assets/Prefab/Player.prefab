@@ -1904,6 +1904,10 @@ MonoBehaviour:
   shieldSlider: {fileID: 0}
   Low: {r: 0.8, g: 0.042993013, b: 0, a: 1}
   High: {r: 0, g: 0.77254903, b: 0.026518578, a: 1}
+  life: 0
+  shield: 0
+  maxLife: 1000
+  maxShield: 200
   deathMenu: {fileID: 4801370767181865438}
   victoryMenu: {fileID: 7140999173018432780}
 --- !u!114 &8882090909920018251
@@ -1926,11 +1930,7 @@ MonoBehaviour:
   _mesureTime: 0.15
   _magnitudeThreshold: 2
   weel: {fileID: 0}
-  orbs:
-  - {fileID: 21300000, guid: ba7bf56b435bfb9428c3cc72da201537, type: 3}
-  - {fileID: 21300000, guid: 688c0b3ea6859fa44a3d3d229fadf453, type: 3}
-  - {fileID: 21300000, guid: 8cd91df122ffa1c45a5cc4f7c6f3235c, type: 3}
-  - {fileID: 21300000, guid: e250f6c8d150b554d8d87c843f694273, type: 3}
+  orbs: []
 --- !u!95 &-6810097734828124776
 Animator:
   serializedVersion: 3
