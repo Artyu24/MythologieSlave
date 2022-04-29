@@ -99,6 +99,8 @@ public class PlayerAttack : MonoBehaviour {
             if(timerFertility >= cooldownFertility) {
                 timerFertility = 0;
                 startCooldownFertility = false;
+                if (transform.gameObject.TryGetComponent<PlayerController>(out PlayerController controller))
+                    controller.animator.SetBool("IsAttacking", false);
             }
         }
 
@@ -108,6 +110,8 @@ public class PlayerAttack : MonoBehaviour {
             if (timerHammer >= cooldownHammer) {
                 timerHammer = 0;
                 startCooldownHammer = false;
+                if (transform.gameObject.TryGetComponent<PlayerController>(out PlayerController controller))
+                    controller.animator.SetBool("IsAttacking", false);
             }
         }
 
@@ -117,6 +121,11 @@ public class PlayerAttack : MonoBehaviour {
             if (timerRay >= cooldownRay) {
                 timerRay = 0;
                 startCooldownRay = false;
+                if (transform.gameObject.TryGetComponent<PlayerController>(out PlayerController controller))
+                {
+                    Debug.Log("change");
+                    controller.animator.SetBool("IsAttacking", false);
+                }
             }
         }
 
@@ -143,6 +152,10 @@ public class PlayerAttack : MonoBehaviour {
         {
             axeDelay = 0;
             isActive = true;
+
+            if (transform.gameObject.TryGetComponent<PlayerController>(out PlayerController controller))
+                controller.animator.SetBool("IsAttacking", true);
+
             AxeAttack axeObject = Instantiate(axe, spawnAxePoint.position, Quaternion.identity);
             axeObject.Speed = axeSpeed;
             axeObject.Damage = axeDamage;
@@ -189,6 +202,9 @@ public class PlayerAttack : MonoBehaviour {
         
         startCooldownFertility = true;
 
+        if (transform.gameObject.TryGetComponent<PlayerController>(out PlayerController controller))
+            controller.animator.SetBool("IsAttacking", true);
+
         SpawnAllies();
         
     }
@@ -220,6 +236,10 @@ public class PlayerAttack : MonoBehaviour {
         if (!hasHammerSkill && !startCooldownHammer)
             return;
 
+
+        if (transform.gameObject.TryGetComponent<PlayerController>(out PlayerController controller))
+            controller.animator.SetBool("IsAttacking", true);
+
         SpawnHammer();
         
     }
@@ -239,9 +259,12 @@ public class PlayerAttack : MonoBehaviour {
 
         timer += spawnDelay;
 
-        if(timer < maxTimerHammer) {
+        if (timer < maxTimerHammer)
+        {
             SpawnHammer();
         }
+        else
+            timer = 0;
     }
 
     private void SpawnHammer() {
@@ -262,6 +285,9 @@ public class PlayerAttack : MonoBehaviour {
     public void OnLaserSkill() {
         if (!hasRaySkill && !startCooldownRay)
             return;
+
+      //  if (transform.gameObject.TryGetComponent<PlayerController>(out PlayerController controller))
+        //    controller.animator.SetBool("IsAttacking", true);
 
         GameObject ray = Instantiate(rayPrefab, transform.position,Quaternion.identity);
 

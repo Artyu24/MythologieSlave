@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTimer: 5
+  follow: 1
 --- !u!1 &8789225065561674290
 GameObject:
   m_ObjectHideFlags: 0
