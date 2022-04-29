@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SkillMenu",
+                    "type": "Button",
+                    "id": "d8561d4a-609a-4ad4-a81f-9af3a4bb9e87",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -139,7 +148,7 @@
                 {
                     "name": "",
                     "id": "7244b1dd-48c7-4e9b-80f7-716106788c3e",
-                    "path": "<Keyboard>/z",
+                    "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -150,7 +159,7 @@
                 {
                     "name": "",
                     "id": "2ee1868b-314d-4a80-877c-bf451dffb78a",
-                    "path": "<Keyboard>/x",
+                    "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -188,6 +197,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "CompetenceOne",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "70fbfc0b-8447-4a84-bb49-9bbab2977a23",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SkillMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -32,6 +32,15 @@ public class Scepter : MonoBehaviour {
 
     public static Scepter Instance { get; private set; }
 
+
+    private bool hasOpenSkillMenu;
+    private int actualSkillId = 1;
+
+    public Image weel;
+
+    public Sprite[] orbs;
+
+
     private void Awake() {
         Instance = this;
     }
@@ -65,28 +74,11 @@ public class Scepter : MonoBehaviour {
 
                     Debug.Log("averageX : " + averageX + " averageY: " + averageY + " averageZ: " + averageZ);
 
-                    // Decide sort
-                    if(Mathf.Abs(averageY) > Mathf.Abs(averageX) && 
-                        Mathf.Abs(averageY) > Mathf.Abs(averageZ) && 
-                        averageY < 0) {
-                        Debug.Log("Tonnerre !");
-                        Attack(0);
-                    }
-                    else if(Mathf.Abs(averageX) > Mathf.Abs(averageY) && 
+                    
+                    if(Mathf.Abs(averageX) > Mathf.Abs(averageY) && 
                         Mathf.Abs(averageX) > Mathf.Abs(averageZ)) {
                         Debug.Log("laser");
-                        Attack(3);
-                    }
-                    else if(Mathf.Abs(averageZ) > Mathf.Abs(averageY) &&
-                        Mathf.Abs(averageZ) > Mathf.Abs(averageX)) {
-                        if(averageZ < 0) {
-                            Debug.Log("fertilit�");
-                            Attack(1);
-                        }
-                        else {
-                            Debug.Log("marteau");
-                            Attack(2);
-                        }
+                        Attack(actualSkillId);
                     }
                     else {
                         Debug.Log("Je sais pas");
@@ -101,6 +93,24 @@ public class Scepter : MonoBehaviour {
             
 
            
+        }
+    }
+
+    public void OnSkillMenu(InputAction.CallbackContext e) {
+        if (e.started) {
+            hasOpenSkillMenu = !hasOpenSkillMenu;
+            Debug.Log("enter menu");
+        }
+    }
+
+    public void OnSkillMenuRight(InputAction.CallbackContext e) {
+        if (e.started && hasOpenSkillMenu) {
+            actualSkillId++;
+            Debug.Log("right");
+            if (actualSkillId >= 4)
+                actualSkillId = 0;
+
+            weel.sprite = orbs[actualSkillId];
         }
     }
 
