@@ -113,9 +113,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: JeTEST
+    name: Peroun
     sentences:
-    - ouais alors vraielkhkzgefsdkjgsfgshjfgesh fejs gfeshjg feskhf esjg fseg fkjesgfgesf
-      sjfge s jhfg esgf ejsgfesgf jegsfj sejhgfeshjgf j
-  deusSprite: {fileID: 21300000, guid: a68fd091e962d1f47bc49d2d8bea14f5, type: 3}
+    - "Tiens !? Bien le bonjour ma petite tu cherches \xE0 vaincre la sorci\xE8re
+      Baba Yaga non ? Et bah j\u2019ai justement ce qu\u2019il te faut ! Tien je
+      te donne ma hache, prend en bien soins elle m\u2019a servi pour vaincre de
+      nombreux ennemis. Puisse-t-elle t\u2019aider dans ta qu\xEAte..."
+  deusSprite: {fileID: 21300000, guid: e1968e6693e6f1c499e0b4118677b1a1, type: 3}
   tutorialSprite: {fileID: 21300000, guid: 1f4848a56ecee3a42a8c12aeb5f737dd, type: 3}

@@ -66,7 +66,7 @@ public class Orb : MonoBehaviour
             enemyIA.DistancePlayer = 0;
         }
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
         
         FindObjectOfType<DialogueManager>().EndDialogue();
         if (GameManager.gameState == GameManager.GameState.Tuto && GameManager.tutorialState == GameManager.TutorialState.Interaction)

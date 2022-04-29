@@ -28,7 +28,7 @@ public class ActivateBoss : MonoBehaviour
     public void ActivateATotem()
     {
         totemActif++;
-        if (totemActif == 4)
+        if (totemActif == 5)
         {
             Instantiate(boss, spawnBossPoint.position, Quaternion.identity);
         }

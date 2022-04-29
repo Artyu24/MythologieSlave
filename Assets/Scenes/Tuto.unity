@@ -1862,8 +1862,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.9971, y: -11.7545}
-  m_SizeDelta: {x: 998.0059, y: 105.643}
+  m_AnchoredPosition: {x: 0.0000014305, y: -26.404}
+  m_SizeDelta: {x: 1172.5964, y: 156.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &329676233
 MonoBehaviour:
@@ -1886,9 +1886,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 18
-    m_FontStyle: 0
+    m_Font: {fileID: 12800000, guid: 4bbf758380ba1104aac40ef20afe8aad, type: 3}
+    m_FontSize: 36
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -1898,7 +1898,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: "Qui vient de m\u2019appeler dans un endroit si peu lumineux ? Oh c\u2019est
+    toi, que me veux-tu donc tr\xE8s cher? Vaincre Baba Yaga ! Eh bien ce n\u2019est
+    pas une mince \xE0 faire mais apr\xE8s tout tu as notre b\xE2ton donc je ne m\u2019en
+    fais pas, tiens voici ma b\xE9n\xE9diction et qu\u2019elle guide tes pas vers
+    le soleil."
 --- !u!222 &329676234
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1942,7 +1946,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -785, y: -504.68008}
+  m_AnchoredPosition: {x: -815, y: 445}
   m_SizeDelta: {x: 250.6996, y: 53.9093}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &340490262
@@ -3564,8 +3568,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: 3}
-  m_SizeDelta: {x: 1035.3613, y: 173.47}
+  m_AnchoredPosition: {x: 0.0068665, y: -6.8638}
+  m_SizeDelta: {x: 1206.7, y: 223.44}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &704422767
 MonoBehaviour:
@@ -3712,7 +3716,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -642.08765, y: -467.61737}
+  m_AnchoredPosition: {x: -672.08765, y: 482.0627}
   m_SizeDelta: {x: 536.5805, y: 70.4695}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &717586726
@@ -4263,8 +4267,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -454.1494, y: 121.99994}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -416.78, y: 164}
+  m_SizeDelta: {x: 213.5053, y: 277.2507}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &847755326
 MonoBehaviour:
@@ -4286,9 +4290,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 78007be90e3c1754fa3e2b1c72a95186, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -5194,9 +5198,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -389.1449, y: 59.033615}
-  m_SizeDelta: {x: 229.7103, y: 35.9328}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -448.16, y: 77.772}
+  m_SizeDelta: {x: 276.2678, y: 51.4519}
+  m_Pivot: {x: 0.5, y: 0.49999997}
 --- !u!114 &1058548441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5218,13 +5222,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
-    m_FontStyle: 0
+    m_Font: {fileID: 12800000, guid: 4bbf758380ba1104aac40ef20afe8aad, type: 3}
+    m_FontSize: 35
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -6623,8 +6627,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.69070846, y: 0.102666676}
   m_AnchorMax: {x: 0.69070846, y: 0.102666676}
-  m_AnchoredPosition: {x: -52.850586, y: -913.43}
-  m_SizeDelta: {x: 1035.3613, y: 173.47}
+  m_AnchoredPosition: {x: -366.16, y: 31.121}
+  m_SizeDelta: {x: 1206.6912, y: 209.7119}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1357407362
 Animator:

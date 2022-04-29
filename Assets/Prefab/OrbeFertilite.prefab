@@ -73,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0.4811321, g: 0.2233853, b: 0.020425411, a: 1}
+  m_Sprite: {fileID: 21300000, guid: a29d5e0836f1a004bbb7349b27cc7af3, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -113,9 +113,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: JeTEST
+    name: Siwa
     sentences:
-    - ouais alors vraielkhkzgefsdkjgsfgshjfgesh fejs gfeshjg feskhf esjg fseg fkjesgfgesf
-      sjfge s jhfg esgf ejsgfesgf jegsfj sejhgfeshjgf j
-  deusSprite: {fileID: 21300000, guid: a68fd091e962d1f47bc49d2d8bea14f5, type: 3}
+    - "Oh voil\xE0 bien des ann\xE9es que l\u2019on m'avait pas demand\xE9es de l\u2019aide,
+      venant d'une jeune magicienne je me dois de lui donner ma b\xE9n\xE9diction
+      ! Tiens voici mon pouvoir, fais en bon usage."
+  deusSprite: {fileID: 21300000, guid: a03a374633dee2142957a403c8c8040d, type: 3}
   tutorialSprite: {fileID: 21300000, guid: 1f4848a56ecee3a42a8c12aeb5f737dd, type: 3}

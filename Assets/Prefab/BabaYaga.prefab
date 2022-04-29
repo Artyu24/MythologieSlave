@@ -576,8 +576,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 2747690628134850419, guid: 16037dbd798344f57a526d53d48f5ead, type: 3}
-  m_Color: {r: 0.44259667, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 01585ff48f2c02e4eac3a13d5ddd8489, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -604,7 +604,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.8828125}
+    oldSize: {x: 1.512, y: 2.172}
     newSize: {x: 1, y: 0.8828125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -648,10 +648,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyBullet: {fileID: 4468112687433545785, guid: 7ace0fde6fd22a84bb174d0f37e3c49d, type: 3}
   timeBtwShoot: 0.5
-  cooldownShoot: 3
+  cooldownShoot: 0
   bulletSpeed: 5
   damage: 8
-  timeBtwSpawn: 15
+  timeBtwSpawn: 5
   spawnPointTab:
   - {fileID: 4018226617031029978}
   - {fileID: 531211265657020970}
@@ -675,9 +675,9 @@ MonoBehaviour:
   slider: {fileID: 1205647005740438652}
   Low: {r: 1, g: 0, b: 0, a: 1}
   High: {r: 0.1551745, g: 1, b: 0, a: 1}
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: -2.5, z: 0}
   life: 0
-  maxLife: 1000
+  maxLife: 3000
   potentialLife: 0
 --- !u!1 &7838476669998274706
 GameObject:
