@@ -4408,6 +4408,10 @@ PrefabInstance:
       value: SkillMenu
       objectReference: {fileID: 0}
     - target: {fileID: 3057418030027032448, guid: 032e4a5080c7fd34f955e95358fd17d7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3057418030027032448, guid: 032e4a5080c7fd34f955e95358fd17d7, type: 3}
       propertyPath: m_TagString
       value: WEEL
       objectReference: {fileID: 0}

@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 3057418030027032462}
   m_Layer: 5
   m_Name: Skill
-  m_TagString: Untagged
+  m_TagString: WEEL
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
