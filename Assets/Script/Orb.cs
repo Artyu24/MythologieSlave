@@ -71,11 +71,13 @@ public class Orb : MonoBehaviour
         FindObjectOfType<DialogueManager>().EndDialogue();
         if (GameManager.gameState == GameManager.GameState.Tuto && GameManager.tutorialState == GameManager.TutorialState.Interaction)
         {
+            Debug.Log("Update Tuto");
             GameManager.UpdateTutorial();
             OrbePowerManagement.actualOrb++;
         }
-        else
+        else if(GameManager.gameState != GameManager.GameState.Tuto)
         {
+            Debug.Log("On est en jeu");
             GameManager.gameState = GameManager.GameState.InGame;
             //TotemTracker.Instance.StopTracker();
         }

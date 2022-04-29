@@ -21,6 +21,7 @@ TagManager:
   - AllyBullet
   - DeusImage
   - OrbSpawn
+  - Barriere
   layers:
   - Default
   - TransparentFX
