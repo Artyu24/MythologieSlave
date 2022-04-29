@@ -103,6 +103,7 @@ public class Scepter : MonoBehaviour {
             if (actualSkillId >= 4)
                 actualSkillId = 0;
 
+            weel = GameObject.FindGameObjectWithTag("WEEL").GetComponent<Image>();
             weel.sprite = orbs[actualSkillId];
         }
     }
