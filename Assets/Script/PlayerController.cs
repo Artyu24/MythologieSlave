@@ -12,8 +12,6 @@ public class PlayerController : MonoBehaviour
 
     public bool collideWithTotem;
 
-    public Animator animator;
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -22,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+<<<<<<< HEAD
         if (GameManager.gameState != GameManager.GameState.Paused)
         {
             rb.MovePosition(rb.position + movementInput * Time.fixedDeltaTime * speed);
@@ -39,6 +38,11 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Speed",speedAnim);
         animator.SetFloat("Horizontal", movementInput.x);
         animator.SetFloat("Vertical", movementInput.y);
+=======
+        rb.MovePosition(rb.position + movementInput * Time.fixedDeltaTime * speed);
+        if (movementInput != Vector2.zero && GameManager.GetGameState == GameManager.GameState.Tuto && GameManager.GetTutorialState == GameManager.TutorialState.Mouvement)
+            GameManager.UpdateTutorial();
+>>>>>>> parent of 0738ab4 (Add animations)
     }
 
     public void OnMove(InputAction.CallbackContext ctx) => movementInput = ctx.ReadValue<Vector2>();

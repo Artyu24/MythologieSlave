@@ -20,8 +20,6 @@ public class EnemyIA : MonoBehaviour
     [SerializeField] private float bulletSpeed = 2;
     [SerializeField] private int damage = 5;
 
-    public Animator animator;
-
     public float DistancePlayer { get => distancePlayer; set => distancePlayer = value; }
     public float MovSpeed { get => movSpeed; set => movSpeed = value; }
     public int Damage { get => damage; set => damage = value; }
@@ -57,20 +55,9 @@ public class EnemyIA : MonoBehaviour
         {
             rb.MovePosition(rb.position + enemyDirection.normalized * Time.fixedDeltaTime * movSpeed);
             delay = 0;
-
-            float speedAnim = 0f;
-
-            if ((enemyDirection.normalized.x > 0.1f || enemyDirection.normalized.y > 0.1f) || (enemyDirection.normalized.x < -0.1f || enemyDirection.normalized.y < -0.1f))
-                speedAnim = 1f;
-            else
-                speedAnim = 0f;
-
-            animator.SetFloat("Speed", speedAnim);
-            animator.SetFloat("Horizontal", enemyDirection.normalized.x);
-            animator.SetFloat("Vertical", enemyDirection.normalized.y);
-
         }
-        else {
+        else
+        {
             delay += Time.fixedDeltaTime;
 
             if (delay > timeBtwAttack)

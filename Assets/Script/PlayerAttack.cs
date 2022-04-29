@@ -94,8 +94,6 @@ public class PlayerAttack : MonoBehaviour {
             if(timerFertility >= cooldownFertility) {
                 timerFertility = 0;
                 startCooldownFertility = false;
-                if (transform.gameObject.TryGetComponent<PlayerController>(out PlayerController controller))
-                    controller.animator.SetBool("IsAttacking", false);
             }
         }
 
@@ -105,8 +103,6 @@ public class PlayerAttack : MonoBehaviour {
             if (timerHammer >= cooldownHammer) {
                 timerHammer = 0;
                 startCooldownHammer = false;
-                if (transform.gameObject.TryGetComponent<PlayerController>(out PlayerController controller))
-                    controller.animator.SetBool("IsAttacking", false);
             }
         }
 
@@ -116,11 +112,6 @@ public class PlayerAttack : MonoBehaviour {
             if (timerRay >= cooldownRay) {
                 timerRay = 0;
                 startCooldownRay = false;
-                if (transform.gameObject.TryGetComponent<PlayerController>(out PlayerController controller))
-                {
-                    Debug.Log("change");
-                    controller.animator.SetBool("IsAttacking", false);
-                }
             }
         }
 
@@ -138,6 +129,7 @@ public class PlayerAttack : MonoBehaviour {
                 bulletDelay += Time.fixedDeltaTime;
             }
 
+<<<<<<< HEAD
             if (isAutoShooting && bulletDelay >= 0.25f)
             {
                 bulletDelay = 0;
@@ -158,6 +150,18 @@ public class PlayerAttack : MonoBehaviour {
             }
          }
      }
+=======
+        if (isAxeShooting && axeDelay >= 1f && hasThunderSkill)
+        {
+            axeDelay = 0;
+            isActive = true;
+            AxeAttack axeObject = Instantiate(axe, spawnAxePoint.position, Quaternion.identity);
+            axeObject.Speed = axeSpeed;
+            axeObject.Damage = axeDamage;
+            axeObject.NbrEnemyStrikeMax = nbrEnemyStrike;
+        }
+    }
+>>>>>>> parent of 0738ab4 (Add animations)
 
     public void AutoShoot(InputAction.CallbackContext context)
     {
@@ -194,7 +198,10 @@ public class PlayerAttack : MonoBehaviour {
 
         startCooldownFertility = true;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 0738ab4 (Add animations)
         SpawnAllies();
         
     }
@@ -228,8 +235,11 @@ public class PlayerAttack : MonoBehaviour {
         if (!hasHammerSkill && !startCooldownHammer)
             return;
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> parent of 0738ab4 (Add animations)
         SpawnHammer();
         
     }
@@ -249,12 +259,9 @@ public class PlayerAttack : MonoBehaviour {
 
         timer += spawnDelay;
 
-        if (timer < maxTimerHammer)
-        {
+        if(timer < maxTimerHammer) {
             SpawnHammer();
         }
-        else
-            timer = 0;
     }
 
     private void SpawnHammer() {
@@ -278,9 +285,12 @@ public class PlayerAttack : MonoBehaviour {
         if (!hasRaySkill && !startCooldownRay)
             return;
 
+<<<<<<< HEAD
         PlayerUI.Instance.ResetAffichage();
       //  if (transform.gameObject.TryGetComponent<PlayerController>(out PlayerController controller))
         //    controller.animator.SetBool("IsAttacking", true);
+=======
+>>>>>>> parent of 0738ab4 (Add animations)
         GameObject ray = Instantiate(rayPrefab, transform.position,Quaternion.identity);
 
         ray.transform.parent = transform;
