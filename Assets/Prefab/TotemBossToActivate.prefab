@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 40612c12984dce6449b0d792f95b10c2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -123,4 +123,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   script: {fileID: 0}
+  totemOff: {fileID: 21300000, guid: 40612c12984dce6449b0d792f95b10c2, type: 3}
   totemOn: {fileID: 21300000, guid: 82fdf7927f601594fb8dd08f0c1e1ee5, type: 3}

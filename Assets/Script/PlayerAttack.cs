@@ -11,8 +11,8 @@ public class PlayerAttack : MonoBehaviour {
     [SerializeField] private Bullet bullet;
     [SerializeField] private Transform spawnBulletPoint;
     private float bulletDelay;
-    private float bulletSpeed = 5;
-    private int bulletDamage = 50;
+    private float bulletSpeed = 10;
+    private int bulletDamage = 30;
 
 
     [Header("Competence 1")]
@@ -105,6 +105,7 @@ public class PlayerAttack : MonoBehaviour {
 
             if (isAxeShooting && axeDelay >= 1f && hasThunderSkill)
             {
+                PlayerUI.Instance.ResetAffichage();
                 axeDelay = 0;
                 isActive = true;
                 AxeAttack axeObject = Instantiate(axe, spawnAxePoint.position, Quaternion.identity);
@@ -158,6 +159,8 @@ public class PlayerAttack : MonoBehaviour {
 
     public void SpawnAllies() {
         
+        PlayerUI.Instance.ResetAffichage();
+
         GameObject ally = Instantiate(allyPrefab, transform.GetChild(0).position, Quaternion.identity);
 
         ally.transform.parent = transform;
@@ -207,6 +210,8 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     private void SpawnHammer() {
+        PlayerUI.Instance.ResetAffichage();
+
         GameObject hammer = Instantiate(hammerPrefab,transform.position,Quaternion.Euler(0,0,-180));
 
         hammerSpeed.x = Random.Range(1, radiusArea);
@@ -224,7 +229,7 @@ public class PlayerAttack : MonoBehaviour {
     public void OnLaserSkill() {
         if (!hasRaySkill)
             return;
-
+        PlayerUI.Instance.ResetAffichage();
         Instantiate(rayPrefab, transform.position,Quaternion.identity);
     }
 

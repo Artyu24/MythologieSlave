@@ -69,6 +69,10 @@ public class PauseMenu : MonoBehaviour
                 {
                     GameManager.gameState = GameManager.GameState.Tuto;
                 }
+                else if (GameManager.isInBossFight == true)
+                {
+                    GameManager.gameState = GameManager.GameState.FinalBoss;
+                }
                 else
                 {
                     GameManager.gameState = GameManager.GameState.InGame;

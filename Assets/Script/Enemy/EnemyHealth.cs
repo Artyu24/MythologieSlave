@@ -52,6 +52,16 @@ public class EnemyHealth : MonoBehaviour
     public void TakePotentialDamage(int potentialDamage)
     {
         potentialLife -= potentialDamage;
+        if (potentialLife <= 0)
+        {
+            StartCoroutine(ResetPotentialLife());
+        }
+    }
+
+    private IEnumerator ResetPotentialLife()
+    {
+        yield return new WaitForSeconds(1.3f);
+        potentialLife = life;
     }
 
     private void SetHealth()

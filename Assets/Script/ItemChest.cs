@@ -23,39 +23,32 @@ public class ItemChest : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            if (gameObject.CompareTag("SilverChest"))
+            //Jouer l'anim d'ouverture du coffre
+            objectImg.gameObject.GetComponent<PlayerUI>().StartAffichageUI();
+            int i = Random.Range(0, 4);
+            switch (i)
             {
-                //Jouer l'anim d'ouverture du coffre
-                objectImg.gameObject.GetComponent<PlayerUI>().StartAffichageUI();
-                int i = Random.Range(0, 4);
-                switch (i)
-                {
-                    case 0:
-                        objectImg.sprite = soinSprite;
-                        objectText.text = soinText;
-                        col.gameObject.GetComponent<PlayerHealth>().AddLife(addLife);
-                        break;
-                    case 1:
-                        objectImg.sprite = shieldSprite;
-                        objectText.text = shieldText;
-                        col.gameObject.GetComponent<PlayerHealth>().AddShield();
-                        //Add Shield
-                        break;
-                    case 2:
-                        objectImg.sprite = damageSprite;
-                        objectText.text = damageText;
-                        col.gameObject.GetComponent<PlayerAttack>().UpgradeDamage(5);
-                        break;
-                    case 3:
-                        objectImg.sprite = speedSprite;
-                        objectText.text = speedText;
-                        col.gameObject.GetComponent<PlayerController>().speed += 2;
-                        break;
-                }
-            }
-            else
-            {
-                //AFFICHAGE DE LA BOULE CHOISIS ET DE SON AMELIORATION
+                case 0:
+                    objectImg.sprite = soinSprite;
+                    objectText.text = soinText;
+                    col.gameObject.GetComponent<PlayerHealth>().AddLife(addLife);
+                    break;
+                case 1:
+                    objectImg.sprite = shieldSprite;
+                    objectText.text = shieldText;
+                    col.gameObject.GetComponent<PlayerHealth>().AddShield();
+                    //Add Shield
+                    break;
+                case 2:
+                    objectImg.sprite = damageSprite;
+                    objectText.text = damageText;
+                    col.gameObject.GetComponent<PlayerAttack>().UpgradeDamage(5);
+                    break;
+                case 3:
+                    objectImg.sprite = speedSprite;
+                    objectText.text = speedText;
+                    col.gameObject.GetComponent<PlayerController>().speed += 2;
+                    break;
             }
             Destroy(gameObject);
         }

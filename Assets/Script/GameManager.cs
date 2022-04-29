@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float delayEndBtwEachEnemy = 0.5f;
     public static int enemyKill;
     public static Vector3 lastEnemyKillPos;
+    public static bool isInBossFight;
 
     [Header("Chest")] 
     [SerializeField] private GameObject silverChest;

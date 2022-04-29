@@ -10,6 +10,21 @@ public class ActivateBoss : MonoBehaviour
     [SerializeField] private GameObject boss;
     [SerializeField] private Transform spawnBossPoint;
 
+    public static ActivateBoss Instance { get; private set; }
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    public void InitFight()
+    {
+        totemOne.GetComponent<TotemToActivate>().ResetTotem();
+        totemTwo.GetComponent<TotemToActivate>().ResetTotem();
+        totemThree.GetComponent<TotemToActivate>().ResetTotem();
+        totemFour.GetComponent<TotemToActivate>().ResetTotem();
+        totemActif = 0;
+    }
+
     public void ActivateATotem()
     {
         totemActif++;

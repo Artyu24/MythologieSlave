@@ -5,41 +5,10 @@ using UnityEngine.UI;
 
 public class Orb : MonoBehaviour
 {
-    //public enum OrbType
-    //{
-    //    FEU,
-    //    FERTILITE,
-    //    FORGERON,
-    //    FOUDRE
-    //}
-
-    //public OrbType orb;
-    //public string dialogName;
-
-
-    //public void UnlockOrb() {
-    //    switch(orb) {
-    //        case OrbType.FEU:
-    //            PlayerAttack.Instance.hasThunderSkill = true;
-    //            break;
-
-    //        case OrbType.FERTILITE:
-    //            PlayerAttack.Instance.hasFertilitySkill = true;
-    //            break;
-
-    //        case OrbType.FORGERON:
-    //            PlayerAttack.Instance.hasHammerSkill = true;
-    //            break;
-
-    //        case OrbType.FOUDRE:
-    //            PlayerAttack.Instance.hasRaySkill = true;
-    //            break;
-    //    }
-    //}
-
     public Dialogue dialogue;
     private Image deusImg;
     [SerializeField] private Sprite deusSprite;
+    [SerializeField] private Sprite tutorialSprite;
 
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -60,6 +29,8 @@ public class Orb : MonoBehaviour
                 PlayerAttack.Instance.hasRaySkill = true;
             else if (gameObject.CompareTag("Forge"))
                 PlayerAttack.Instance.hasHammerSkill = true;
+
+            PlayerUI.Instance.StartAffichageUITutorial(tutorialSprite);
 
             StartCoroutine(StopDialogue());
 

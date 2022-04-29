@@ -5,15 +5,21 @@ using UnityEngine;
 public class TotemToActivate : MonoBehaviour
 {
     public ActivateBoss script;
-    [SerializeField] private Sprite totemOn;
+    [SerializeField] private Sprite totemOff, totemOn;
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
             script.ActivateATotem();
-            Destroy(gameObject.GetComponent<BoxCollider2D>());
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
             gameObject.GetComponent<SpriteRenderer>().sprite = totemOn;
         }
+    }
+
+    public void ResetTotem()
+    {
+        gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        gameObject.GetComponent<SpriteRenderer>().sprite = totemOff;
     }
 }
