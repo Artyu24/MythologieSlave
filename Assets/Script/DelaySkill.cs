@@ -8,7 +8,13 @@ public class DelaySkill : MonoBehaviour {
 
     public float maxTimer;
 
+    public bool follow;
+
     void Update() {
+
+        if (follow)
+            transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
+
         timer += Time.deltaTime;
 
         if (timer >= maxTimer)
